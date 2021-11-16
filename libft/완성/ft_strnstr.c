@@ -6,47 +6,43 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 09:44:58 by ohw               #+#    #+#             */
-/*   Updated: 2021/10/19 00:56:13 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/16 16:08:00 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//typedef unsigned int size_t;
 #include <stdio.h>
-
-char	*ft_strstr(char *str, char *to_find)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int		j;
+	size_t	i;
 	char	*find;
 
-	if (*to_find == '\0')
-		return (str);
-	while (*str != '\0')
+	if (*needle == '\0')
+		return ((char *)haystack);
+	while (*haystack != '\0' && len > 0)
 	{
-		j = 0;
-		while (*str == to_find[j])
+		i = 0;
+		while (*haystack == needle[i])
 		{
-			if (j == 0)
-				find = str;
-			str ++;
-			j ++;
-			if (to_find[j] == '\0')
+			if (i == 0)
+				find = (char *)haystack;
+			haystack ++;
+			len --;
+			i ++;
+			if (needle[i] == '\0')
 				return (find);
-			if (to_find[j] != '\0' && *str == '\0')
+			if (needle[i] != '\0' && (*haystack == '\0' | len == 0))
 				return (0);
 		}
-		str ++;
+		haystack ++;
+		len --;
 	}
 	return (0);
 }
-
 int	main(void)
 {
-    char dest[9] = "babbabcd";
-    char find[6] = "abcde";
-	char *ret;
+	char	haystack[100] = "HelloWorld";
+	char	needle[100] = "llo";
 
-	ret = ft_strstr(dest, find);
-	if (ret == 0)
-		printf("없어\n");
-	else
-		printf("%s", ret);
+	printf("%s\n", ft_strnstr(haystack, needle, 4));
 }

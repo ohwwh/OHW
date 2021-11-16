@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 13:48:27 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/11 10:10:53 by ohw              ###   ########.fr       */
+/*   Created: 2021/10/13 19:52:56 by ohw               #+#    #+#             */
+/*   Updated: 2021/11/16 14:00:44 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef unsigned int size_t;
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	char	*buf;
-	size_t	i;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	t;
 
 	i = 0;
-	while (i < len)
-	{
-		*(buf + i) = *((char *)src + i);
+	j = 0;
+	while (dest[i] != '\0')
 		i ++;
-	}
-	i = 0;
-	while (i < len)
+	t = i;
+	while (i + 1 < size && src[j] != '\0')
 	{
-		*((char *)dst + i) = *(buf + i);
+		dest[i] = src[j];
 		i ++;
+		j ++;
 	}
-
+	dest[i] = '\0';
+	while (src[j] != '\0')
+		j ++;
+	if (t >= size)
+		return (j + size);
+	else
+		return (t + j);
 }

@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 16:42:19 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/08 23:59:05 by ohw              ###   ########.fr       */
+/*   Created: 2021/11/16 14:17:22 by hoh               #+#    #+#             */
+/*   Updated: 2021/11/16 16:09:56 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef unsigned int size_t;
-
-void	*ft_memset(void *b, int c, size_t len)
+char	*strrchr(const char *s, int c)
 {
-	size_t			i;
+	int	i;
+	int	len;
 
 	i = 0;
+	len = 1;
+	while (!*s)
+	{
+		len ++;
+		s ++;
+	}
 	while (i < len)
 	{
-		*((unsigned char *)b + i) = c;
+		if (*s == (char)c)
+			return ((char *)s);
+		s --;
 		i ++;
 	}
-	return (b);
+	return (0);
 }
+//컴파일 해볼 것

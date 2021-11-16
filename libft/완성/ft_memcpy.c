@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 23:46:25 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/08 23:58:15 by ohw              ###   ########.fr       */
+/*   Created: 2021/11/09 00:00:15 by ohw               #+#    #+#             */
+/*   Updated: 2021/11/16 12:08:41 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 typedef unsigned int size_t;
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
-	size_t			i;
+	size_t	i;
 
 	i = 0;
 	while (i < n)
 	{
-		*((unsigned char *)s + i) = 0;
+		*((unsigned char *)dst + i) = *((const char *)src + i);
 		i ++;
 	}
+	return (dst);
 }

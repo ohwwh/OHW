@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 00:00:15 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/09 13:30:20 by ohw              ###   ########.fr       */
+/*   Created: 2021/11/08 16:42:19 by ohw               #+#    #+#             */
+/*   Updated: 2021/11/16 13:54:30 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 typedef unsigned int size_t;
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t	i;
-	const char *s = src;
 
 	i = 0;
-	while (i < n)
+	while (i < len)
 	{
-		*((char *)dst + i) = *((const char *)src + i);
+		*((unsigned char *)b + i) = (unsigned char)c;
 		i ++;
 	}
-	return (dst);
+	return (b);
 }
