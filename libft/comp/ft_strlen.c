@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 14:17:22 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/16 16:09:56 by hoh              ###   ########.fr       */
+/*   Created: 2021/10/13 21:33:36 by ohw               #+#    #+#             */
+/*   Updated: 2021/11/23 17:24:25 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strrchr(const char *s, int c)
+#include <stdio.h>
+
+int	ft_strlen(char *str)
 {
-	int	i;
 	int	len;
 
-	i = 0;
-	len = 1;
-	while (!*s)
-	{
-		len ++;
-		s ++;
-	}
-	while (i < len)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s --;
-		i ++;
-	}
-	return (0);
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
 }
-//컴파일 해볼 것

@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 17:09:15 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/23 17:22:05 by ohw              ###   ########.fr       */
+/*   Created: 2021/10/14 10:51:08 by hoh               #+#    #+#             */
+/*   Updated: 2021/11/23 17:24:09 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stdio.h>
 
-static void	ft_bzero(void *s, size_t n)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	size_t	i;
+	unsigned int	i;
 
 	i = 0;
-	while (i < n)
+	while (i + 1 < size && src[i] != '\0')
 	{
-		*((unsigned char *)s + i) = 0;
+		dest[i] = src[i];
 		i ++;
 	}
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*ret;
-	
-	if (!count | !size)
-		return (0);
-	ret = malloc(count * size);
-	if (ret)
-		ft_bzero(ret, count * size);
-	return (ret);
+	if (size != 0)
+		dest[i] = '\0';
+	while (src[i] != '\0')
+		i ++;
+	return (i);
 }

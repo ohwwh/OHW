@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 17:09:15 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/23 17:22:05 by ohw              ###   ########.fr       */
+/*   Created: 2021/10/12 20:55:19 by hoh               #+#    #+#             */
+/*   Updated: 2021/11/08 16:37:32 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-static void	ft_bzero(void *s, size_t n)
+int	ft_isdigit(int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		*((unsigned char *)s + i) = 0;
-		i ++;
-	}
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*ret;
-	
-	if (!count | !size)
-		return (0);
-	ret = malloc(count * size);
-	if (ret)
-		ft_bzero(ret, count * size);
-	return (ret);
+	if ('0' <= c && c <= '9')
+		return (1);
+	return (0);
 }

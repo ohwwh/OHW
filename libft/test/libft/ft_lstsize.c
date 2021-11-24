@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 14:17:22 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/16 16:09:56 by hoh              ###   ########.fr       */
+/*   Created: 2021/11/22 12:18:44 by ohw               #+#    #+#             */
+/*   Updated: 2021/11/22 12:21:49 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strrchr(const char *s, int c)
-{
-	int	i;
-	int	len;
+#include "libft.h"
 
-	i = 0;
-	len = 1;
-	while (!*s)
+int	ft_lstsize(t_list *lst)
+{
+	int	size;
+
+	size = 0;
+	while (lst)
 	{
-		len ++;
-		s ++;
+		size ++;
+		lst = lst -> next;
 	}
-	while (i < len)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s --;
-		i ++;
-	}
-	return (0);
+	return (size);
 }
-//컴파일 해볼 것

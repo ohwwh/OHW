@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 14:17:22 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/16 16:09:56 by hoh              ###   ########.fr       */
+/*   Created: 2021/11/22 12:22:00 by ohw               #+#    #+#             */
+/*   Updated: 2021/11/22 12:25:47 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strrchr(const char *s, int c)
-{
-	int	i;
-	int	len;
+#include "libft.h"
 
-	i = 0;
-	len = 1;
-	while (!*s)
-	{
-		len ++;
-		s ++;
-	}
-	while (i < len)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s --;
-		i ++;
-	}
-	return (0);
+t_list	*ft_lstlast(t_list *lst)
+{
+	while (lst -> next)
+	   lst = lst -> next;
+	return (lst);
 }
-//컴파일 해볼 것

@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 14:17:22 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/16 16:09:56 by hoh              ###   ########.fr       */
+/*   Created: 2021/11/22 16:43:46 by ohw               #+#    #+#             */
+/*   Updated: 2021/11/22 23:55:32 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strrchr(const char *s, int c)
-{
-	int	i;
-	int	len;
+#include "libft.h"
+#include <stdlib.h>
 
-	i = 0;
-	len = 1;
-	while (!*s)
-	{
-		len ++;
-		s ++;
-	}
-	while (i < len)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s --;
-		i ++;
-	}
-	return (0);
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
+{
+	del(lst -> content);
+	free(lst);
 }
-//컴파일 해볼 것

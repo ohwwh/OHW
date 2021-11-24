@@ -6,9 +6,12 @@
 /*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 15:04:13 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/16 16:08:55 by hoh              ###   ########.fr       */
+/*   Updated: 2021/11/22 18:01:01 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+typedef unsigned int size_t;
+
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

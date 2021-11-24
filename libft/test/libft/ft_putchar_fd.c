@@ -1,34 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 14:17:22 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/16 16:09:56 by hoh              ###   ########.fr       */
+/*   Created: 2021/11/20 16:44:20 by ohw               #+#    #+#             */
+/*   Updated: 2021/11/23 21:32:57 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-char	*strrchr(const char *s, int c)
+void	ft_putchar_fd(char c, int fd)
 {
-	int	i;
-	int	len;
-
-	i = 0;
-	len = 1;
-	while (!*s)
-	{
-		len ++;
-		s ++;
-	}
-	while (i < len)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s --;
-		i ++;
-	}
-	return (0);
+	write(fd, &c, 1);	
 }
-//컴파일 해볼 것

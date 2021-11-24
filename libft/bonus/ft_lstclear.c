@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 14:17:22 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/16 16:09:56 by hoh              ###   ########.fr       */
+/*   Created: 2021/11/22 16:36:03 by ohw               #+#    #+#             */
+/*   Updated: 2021/11/23 01:40:18 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strrchr(const char *s, int c)
-{
-	int	i;
-	int	len;
+#include "libft.h"
+#include <stdlib.h>
 
-	i = 0;
-	len = 1;
-	while (!*s)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*delnode;
+
+	while (*lst)
 	{
-		len ++;
-		s ++;
+		delnode = *lst;
+		*lst = (*lst) -> next;
+		del(delnode -> content);
+		free(delnode);
 	}
-	while (i < len)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s --;
-		i ++;
-	}
-	return (0);
 }
-//컴파일 해볼 것

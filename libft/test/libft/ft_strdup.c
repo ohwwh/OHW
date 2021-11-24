@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 17:09:15 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/23 17:22:05 by ohw              ###   ########.fr       */
+/*   Created: 2021/10/20 12:09:58 by ohw               #+#    #+#             */
+/*   Updated: 2021/11/23 20:54:45 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static void	ft_bzero(void *s, size_t n)
+char	*ft_strdup(char *src)
 {
-	size_t	i;
+	int		i;
+	char	*ret;
 
 	i = 0;
-	while (i < n)
-	{
-		*((unsigned char *)s + i) = 0;
+	while (src[i] != 0)
 		i ++;
+	ret = (char *)malloc((i + 1) * sizeof(char));
+	if (ret != 0)
+	{
+		i = 0;
+		while (src[i] != 0)
+		{
+			ret[i] = src[i];
+			i ++;
+		}
+		ret[i] = '\0';
+		return (ret);
 	}
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*ret;
-	
-	if (!count | !size)
-		return (0);
-	ret = malloc(count * size);
-	if (ret)
-		ft_bzero(ret, count * size);
-	return (ret);
+	return (0);
 }
