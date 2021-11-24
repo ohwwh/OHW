@@ -6,17 +6,19 @@
 /*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 14:17:22 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/23 22:32:30 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/24 14:38:04 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	while (!*s)
+	while (*s)
 	{
 		if (*s == (char)c)
 			return ((char *)s);
 		s ++;
 	}
+	if (!c)
+		return ((char *)s);
 	return (0);
 }

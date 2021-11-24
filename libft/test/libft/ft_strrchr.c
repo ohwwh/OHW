@@ -6,22 +6,24 @@
 /*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 14:17:22 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/23 22:34:06 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/24 14:39:21 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 	int	len;
 
 	i = 0;
 	len = 1;
-	while (!*s)
+	while (*s)
 	{
 		len ++;
 		s ++;
 	}
+	if (!c)
+		return ((char *)s);
 	while (i < len)
 	{
 		if (*s == (char)c)

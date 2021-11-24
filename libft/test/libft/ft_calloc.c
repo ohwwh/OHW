@@ -6,7 +6,7 @@
 /*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:09:15 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/23 17:22:05 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/24 17:07:09 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void	*ft_calloc(size_t count, size_t size)
 	void	*ret;
 	
 	if (!count | !size)
-		return (0);
+	{
+		count = 1;
+		size = 1;
+	}
 	ret = malloc(count * size);
 	if (ret)
 		ft_bzero(ret, count * size);

@@ -1,327 +1,25 @@
 ft_memset:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_bzero:      [OK] [OK] [OK] [OK] 
-ft_memcpy:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] 
-[crash]: your memcpy does not behave well with NULL as both params with size
-Test code:
-	ft_memcpy(((void *)0), ((void *)0), 3);
-
-
+ft_memcpy:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_memccpy:    [MISSING]
-ft_memmove:    [CRASH] [CRASH] [CRASH] [OK] [CRASH] [OK] [OK] [CRASH] [CRASH] [OK] [OK] [OK] [OK] [CRASH] 
-[crash]: your memmove does not work with basic input
-Test code:
-	char *src = "this is a good nyancat !\r\n";
-	char dst1[0xF0];
-	char dst2[0xF0];
-	int size = strlen(src);
-
-	__builtin___memmove_chk (dst1, src, size, __builtin_object_size (dst1, 0));
-	ft_memmove(dst2, src, size);
-	if (!memcmp(dst1, dst2, size))
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-
-[crash]: your memmove's return is false/does not work with basic input
-Test code:
-	char *src = "thanks to @apellicc for this test !\r\n";
-	char dst1[0xF0];
-	int size = strlen(src);
-	char *r1 = __builtin___memmove_chk (dst1, src, size, __builtin_object_size (dst1, 0));
-	char *r2 = ft_memmove(dst1, src, size);
-
-	if (r1 != r2)
-		exit(TEST_FAILED);
-	r1 = __builtin___memmove_chk ("", "" - 1, 0, __builtin_object_size ("", 0));
-	r2 = ft_memmove("", "" - 1, 0);
-	if (r1 != r2)
-		exit(TEST_FAILED);
-	exit(TEST_SUCCESS);
-
-
-[crash]: your memmove does not work with \0 and others unsigned char codes
-Test code:
-	char *src = "thi\xffs i\xfas \0a g\xde\xadood \0nyan\0cat\0 !\r\n";
-	int size = 33;
-	char dst1[0xF0];
-	char dst2[0xF0];
-
-	__builtin___memmove_chk (dst1, src, size, __builtin_object_size (dst1, 0));
-	ft_memmove(dst2, src, size);
-	if (!memcmp(dst1, dst2, size))
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-
-[crash]: your memmove does not support the overlap (test 1)
-Test code:
-	char dst1[0xF0];
-	char dst2[0xF0];
-	char *data = "thiß ß\xde\xad\xbe\xeftriñg will be øvérlapéd !\r\n";
-	int size = 0xF0 - 0xF;
-
-	__builtin___memset_chk (dst1, 'A', sizeof(dst1), __builtin_object_size (dst1, 0));
-	__builtin___memset_chk (dst2, 'A', sizeof(dst2), __builtin_object_size (dst2, 0));
-	__builtin___memcpy_chk (dst1, data, strlen(data), __builtin_object_size (dst1, 0));
-	__builtin___memcpy_chk (dst2, data, strlen(data), __builtin_object_size (dst2, 0));
-	__builtin___memmove_chk (dst1 + 3, dst1, size, __builtin_object_size (dst1 + 3, 0));
-	ft_memmove(dst2 + 3, dst2, size);
-	if (!memcmp(dst1, dst2, size))
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-
-[crash]: your memmove does not work with a 128Mo data input !
-Test code:
-	int size = 128 * 1024 * 1024;
-	char *dst = (char *)malloc(sizeof(char) * size);
-	char *data = (char *)malloc(sizeof(char) * size);
-
-	__builtin___memset_chk (data, 'A', size, __builtin_object_size (data, 0));
-	if (!dst)
-		exit(TEST_INVISIBLE);
-	ft_memmove(dst, data, size);
-	exit(TEST_SUCCESS);
-
-
-[crash]: your memmove crash because it read too many bytes or attempt to read on dst !
-Test code:
-	int size = 10;
-	char *dst = electric_alloc(size);
-	char *data = electric_alloc(size);
-
-	__builtin___memset_chk (data, 'A', size, __builtin_object_size (data, 0));
-	ft_memmove(dst, data, size);
-	dst = electric_alloc_rev(size);
-	data = electric_alloc_rev(size);
-	__builtin___memset_chk (data, 'A', size, __builtin_object_size (data, 0));
-	ft_memmove(dst, data, size);
-	exit(TEST_SUCCESS);
-
-
-[crash]: your memmove use malloc ? why ?
-Test code:
-	char *src = "the cake is a lie !\0I'm hidden lol\r\n";
-	char buff[0xF0];
-
-	char *ret = ft_memmove(buff, src, 100);
-	if (ret == ((void *)0))
-	{
-		exit(TEST_FAILED);
-	}
-	exit(TEST_SUCCESS);
-
-
+ft_memmove:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_memchr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_memcmp:     [FAILED] [FAILED] [FAILED] [FAILED] [FAILED] [FAILED] [FAILED] [OK] [OK] [OK] 
-[fail]: your memcmp does not work with basic input
-Test code:
-	char *s1 = "\xff\xaa\xde\x12MACOSX";
-	char *s2 = "\xff\xaa\xde\x12MACOSX";
-	size_t size = 10;
-	int i1 = simple_memcmp(s1, s2, size);
-	int i2 = ft_memcmp(s1, s2, size);
-
-	if (i1 == i2)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-      memcmp: |0|
-   ft_memcmp: |1|
-
-[fail]: your memcmp does not work with basic input
-Test code:
-	char *s1 = "\xff\xaa\xde\x12WXYZ";
-	char *s2 = "\xff\xaa\xde\x12MACOSX";
-	size_t size = 7;
-	int i1 = ((simple_memcmp(s1, s2, size) > 0) ? 1 : ((simple_memcmp(s1, s2, size) < 0) ? -1 : 0));
-	int i2 = ((ft_memcmp(s1, s2, size) > 0) ? 1 : ((ft_memcmp(s1, s2, size) < 0) ? -1 : 0));
-
-	if (i1 == i2)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-      memcmp: |1|
-   ft_memcmp: |-1|
-
-[fail]: your memcmp does not work with basic input
-Test code:
-	char *s1 = "\xff\xaa\xde\x12";
-	char *s2 = "\xff\xaa\xde\x12MACOSAAAAA";
-	size_t size = 4;
-	int i1 = simple_memcmp(s1, s2, size);
-	int i2 = ft_memcmp(s1, s2, size);
-
-	if (i1 == i2)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-      memcmp: |0|
-   ft_memcmp: |1|
-
-[fail]: your memcmp does not work with basic input
-Test code:
-	char *s1 = "\xff\xaa\xde\xffMACOSX\xff";
-	char *s2 = "\xff\xaa\xde\x02";
-	size_t size = 8;
-	int i1 = simple_memcmp(s1, s2, size);
-	int i2 = ft_memcmp(s1, s2, size);
-
-	if (i1 == i2)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-      memcmp: |253|
-   ft_memcmp: |-1|
-
-[fail]: your memcmp does not cast the memory in unsigned char
-Test code:
-	char *s1 = "\xff\xaa\xde\200";
-	char *s2 = "\xff\xaa\xde\0";
-	size_t size = 8;
-	int i1 = simple_memcmp(s1, s2, size);
-	int i2 = ft_memcmp(s1, s2, size);
-
-	if (i1 == i2)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-      memcmp: |128|
-   ft_memcmp: |-1|
-
-[fail]: your memcmp stop at \0
-Test code:
-	char *s1 = "atoms\0\0\0\0";
-	char *s2 = "atoms\0abc";
-	size_t size = 8;
-	int i1 = simple_memcmp(s1, s2, size);
-	int i2 = ft_memcmp(s1, s2, size);
-
-	if (i1 == i2)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-      memcmp: |-97|
-   ft_memcmp: |-1|
-
-[fail]: your memcmp does not work with basic input
-Test code:
-	char *s1 = "\xff\0\0\xaa\0\xde\xffMACOSX\xff";
-	char *s2 = "\xff\0\0\xaa\0\xde\x00MBS";
-	size_t size = 9;
-	int i1 = simple_memcmp(s1, s2, size);
-	int i2 = ft_memcmp(s1, s2, size);
-
-	if (i1 == i2)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-      memcmp: |255|
-   ft_memcmp: |-1|
-
+ft_memcmp:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strlen:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_isalpha:    [OK] 
 ft_isdigit:    [OK] 
-ft_isalnum:    [FAILED] 
-[fail]: your isalnum just doesn't work, REALLY ?!
-Test code:
-	int i;
-
-	i = -1;
-	while (i < 530)
-	{
-		if (!!ft_isalnum(i) != !!isalnum(i))
-			exit(TEST_FAILED);
-		i++;
-	}
-	exit(TEST_SUCCESS);
-
-Diffs:
-
-
+ft_isalnum:    [OK] 
 ft_isascii:    [OK] 
-ft_isprint:    [FAILED] 
-[fail]: your isprint just doesn't work, REALLY ?!
-Test code:
-	int i;
-
-	i = -1;
-	while (i < 530)
-	{
-		if (!!ft_isprint(i) != !!isprint(i))
-		{
-			exit(TEST_FAILED);
-		}
-		i++;
-	}
-	exit(TEST_SUCCESS);
-
-Diffs:
-     isprint: |0|
-  ft_isprint: |1|
-param: (128)
-
+ft_isprint:    [OK] 
 ft_toupper:    [OK] 
 ft_tolower:    [OK] 
-ft_strchr:     [MISSING]
-ft_strrchr:    [MISSING]
-ft_strncmp:    [OK] [OK] [OK] [OK] [OK] [OK] [FAILED] [OK] [OK] [FAILED] [OK] [OK] [OK] [OK] 
-[fail]: your strncmp does not cast in unsigned char the diff
-Test code:
-	char *s1 = "\200";
-	char *s2 = "\0";
-	int i1 = ((strncmp(s1, s2, 1) > 0) ? 1 : ((strncmp(s1, s2, 1) < 0) ? -1 : 0));
-	int i2 = ((ft_strncmp(s1, s2, 1) > 0) ? 1 : ((ft_strncmp(s1, s2, 1) < 0) ? -1 : 0));
-
-	if (i1 == i2)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-     strncmp: |1|
-  ft_strncmp: |-1|
-
-[fail]: your strncmp does not work with non ascii chars
-Test code:
-	char *s1 = "\x12\xff\x65\x12\xbd\xde\xad";
-	char *s2 = "\x12\x02";
-	size_t size = 6;
-	int i1 = ((strncmp(s1, s2, size) > 0) ? 1 : ((strncmp(s1, s2, size) < 0) ? -1 : 0));
-	int i2 = ((ft_strncmp(s1, s2, size) > 0) ? 1 : ((ft_strncmp(s1, s2, size) < 0) ? -1 : 0));
-
-	if (i1 == i2)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-     strncmp: |1|
-  ft_strncmp: |-1|
-
+ft_strchr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
+ft_strrchr:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
+ft_strncmp:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strlcpy:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strlcat:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strnstr:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_atoi:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [KO] [KO] [OK] [OK] [OK] [OK] 
-[KO]: your atoi does not work with over long max value
-Test code:
-	char n[40] = "99999999999999999999999999";
-	int i1 = atoi(n);
-	int i2 = ft_atoi(n);
-
-	if (i1 == i2)
-		exit(TEST_SUCCESS);
-	exit(TEST_KO);
-
-Diffs:
-        atoi: |-1|
-     ft_atoi: |-469762049|
-
+ft_atoi:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [KO] [OK] [OK] [OK] [OK] 
 [KO]: your atoi does not work with over long min value
 Test code:
 	char n[40] = "-99999999999999999999999999";
@@ -334,12 +32,12 @@ Test code:
 
 Diffs:
         atoi: |0|
-     ft_atoi: |469762049|
+     ft_atoi: |-1|
 
-ft_calloc:     [MISSING]
-ft_strdup:     [MISSING]
-ft_substr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}[FAILED] 
-[fail]: your substr does not work when start >= ft_strlen(s)
+ft_calloc:     [OK] [OK] [OK] [OK] [OK] 
+ft_strdup:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
+ft_substr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}[CRASH] 
+[crash]: your substr does not work when start >= ft_strlen(s)
 Test code:
 	char *str = "01234";
 	size_t size = 10;
@@ -353,9 +51,6 @@ Test code:
 	free(ret);
 	exit(TEST_FAILED);
 
-Diffs:
-      substr: ||
-   ft_substr: | strjoin d|
 
 ft_strjoin:    [CRASH] [CRASH] [CRASH] [CRASH] [CRASH] {protected}
 [crash]: your strjoin does not work with basic input
