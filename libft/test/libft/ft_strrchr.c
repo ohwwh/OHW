@@ -6,7 +6,7 @@
 /*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 14:17:22 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/24 14:39:21 by hoh              ###   ########.fr       */
+/*   Updated: 2021/11/25 15:56:40 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ char	*ft_strrchr(const char *s, int c)
 		len ++;
 		s ++;
 	}
-	if (!c)
-		return ((char *)s);
+	/*if (!c)
+		return ((char *)s);*/
 	while (i < len)
 	{
 		if (*s == (char)c)

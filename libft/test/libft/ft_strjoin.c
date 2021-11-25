@@ -6,92 +6,49 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 15:09:55 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/23 21:44:17 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/25 17:12:35 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int	ft_strlen(char *str)
+static int	ft_strlen(const char *str)
 {
 	int	len;
 
 	len = 0;
-	while (str[len] != 0)
-		len ++;
+	while (str[len] != '\0')
+		len++;
 	return (len);
 }
 
-static int	ft_strlcat(char *dest, char *src, int size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
-	int	j;
-	int	t;
-
-	i = 0;
-	j = 0;
-	while (dest[i] != '\0')
-		i ++;
-	t = i;
-	while (i + 1 < size && src[j] != '\0')
-	{
-		dest[i] = src[j];
-		i ++;
-		j ++;
-	}
-	dest[i] = '\0';
-	while (src[j] != '\0')
-		j ++;
-	if (t >= size)
-		return (j + size);
-	else
-		return (t + j);
-}
-
-static int	getsize(int size, char *strs, char *sep)
-{
-	int	len;
-	int	k;
-	int	bsize;
-
-	if (size == 0)
-		return (1);
-	if (size < 0)
-		return (-1);
-	bsize = 0;
-	k = 1;
-	while (k <= size)
-	{
-		len = ft_strlen(strs);
-		bsize += len + 1;
-		if (k != size)
-			strs += (len + 1);
-		k ++;
-	}
-	return (bsize + (ft_strlen(sep) * (size - 1)));
-}
-
-char	*ft_strjoin(int size, char **strs, char *sep)
-{
+	int		buf;
 	char	*ret;
-	int		bsize;
-	int		k;
+	int		i;
 
-	k = 1;
-	bsize = getsize(size, *strs, sep);
-	if (bsize < 0)
+	if (!s1 | !s2)
 		return (0);
-	ret = (char *)malloc(bsize);
-	if (ret != 0)
+	i = 0;
+	buf = ft_strlen(s1) + ft_strlen(s2) + 1;
+	ret = (char *)malloc(sizeof(char) * buf);
+	if (ret)
 	{
-		while (k <= size)
+		while (*s1)
 		{
-			ft_strlcat(ret, strs[k - 1], bsize);
-			if (k != size)
-				ft_strlcat(ret, sep, bsize);
-			k ++;
+			ret[i] = *s1;
+			i ++;
+			s1 ++;
 		}
-		return (ret);
+		while (*s2)
+		{
+			ret[i] = *s2;
+			i ++;
+			s2 ++;
+		}
+		ret[i] = 0;
 	}
-	return (0);
+	return (ret);
+
 }

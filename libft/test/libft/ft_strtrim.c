@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:03:13 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/23 22:34:25 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/25 17:58:10 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_isset(char const c, char const *set)
 {
-	while (set)
+	while (*set)
 	{
 		if (*set == c)
 			return (1);
@@ -53,14 +53,20 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*ret;
 
 	temp = (char *)s1;
-	if (ft_isset(*temp, set))
+	while (ft_isset(*temp, set))
 		temp ++;
 	start = temp;
 	while (*temp)
 		temp ++;
 	temp --;
-	if (ft_isset(*temp, set))
-	  *temp = 0;
+	while (ft_isset(*temp, set))
+		temp --;
+	temp ++;
+	while (ft_isset(*temp, set))
+	{
+		*temp = 0;
+		temp ++;
+	}
 	ret = ft_strdup(start);
 	return (ret);
 }

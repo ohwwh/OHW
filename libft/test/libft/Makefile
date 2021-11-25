@@ -6,11 +6,11 @@
 #    By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/23 02:36:10 by ohw               #+#    #+#              #
-#    Updated: 2021/11/24 16:59:34 by hoh              ###   ########.fr        #
+#    Updated: 2021/11/25 16:19:51 by ohw              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = clang
 CFLAGS = -Wall -Wextra -Werror
 NAME=libft.a
 SRCSDIR=srcs
