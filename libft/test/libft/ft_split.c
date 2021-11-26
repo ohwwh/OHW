@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:36:11 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/23 21:43:51 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 01:13:24 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,24 @@ char	**ft_split(char const *s, char c)
     char	**ret;
 	int		i;
 
+	if (!s)
+		return (0);
 	i = 0;
     ret = (char **)malloc(sizeof(char *) * (wordcount(s, c) + 1));
-    while (*s)
-    {
-        if (*s != c && *s)
-        {
-            ret[i] = ft_strdup(s, c);           
-			i ++;
-			s += wordlen(s, c);
-        }
-        else
-            s ++;
-    }
-	ret[i] = 0;
+    if (ret)
+	{	
+		while (*s)
+		{
+			if (*s != c && *s)
+			{
+				ret[i] = ft_strdup(s, c);           
+				i ++;
+				s += wordlen(s, c);
+			}
+			else
+				s ++;
+		}
+		ret[i] = 0;
+	}
     return (ret);
 }

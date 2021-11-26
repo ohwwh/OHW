@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 15:06:12 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/23 21:34:05 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 01:15:46 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*ret;
 	unsigned int	i;
 
+	if (!s)
+		return (0);
 	i = 0;
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (ret)

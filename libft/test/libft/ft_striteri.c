@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 15:19:42 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/23 21:33:48 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 01:17:16 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	unsigned int	i;
 
 	i = 0;
-	while (s[i])
+	while (s && s[i])
 	{
 		f(i, &s[i]);
 		i ++;

@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:03:13 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/25 17:58:10 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 01:14:39 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,59 +14,62 @@
 
 static int	ft_isset(char const c, char const *set)
 {
-	while (*set)
-	{
-		if (*set == c)
-			return (1);
-		set ++;
-	}
-	return (0);
+    while (*set)
+    {
+        if (*set == c)
+            return (1);
+        set ++;
+    }
+    return (0);
 }
 
-static char	*ft_strdup(char *src)
+static int	getbuf(char const *s1, char const *set)
 {
-	int		i;
-	char	*ret;
+    int		buf;
+    char	*temp;
 
-	i = 0;
-	while (src[i] != 0)
-		i ++;
-	ret = (char *)malloc((i + 1) * sizeof(char));
-	if (ret)
-	{
-		i = 0;
-		while (src[i] != 0)
-		{
-			ret[i] = src[i];
-			i ++;
-		}
-		ret[i] = '\0';
-		return (ret);
-	}
-	return (0);
+    buf = 0;
+    temp  = (char *)s1;
+    while (ft_isset(*temp, set))
+        temp ++;
+    while (*temp)
+    {
+        temp ++;
+        buf ++;
+    }
+    if (buf <= 0)
+        return (1);
+    temp --;
+    while (ft_isset(*temp, set))
+    {
+        temp --;
+        buf --;
+    }
+    return (buf + 1);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*start;
-	char	*temp;
-	char	*ret;
+    int		buf;
+    int		i;
+    char	*ret;
 
-	temp = (char *)s1;
-	while (ft_isset(*temp, set))
-		temp ++;
-	start = temp;
-	while (*temp)
-		temp ++;
-	temp --;
-	while (ft_isset(*temp, set))
-		temp --;
-	temp ++;
-	while (ft_isset(*temp, set))
-	{
-		*temp = 0;
-		temp ++;
-	}
-	ret = ft_strdup(start);
-	return (ret);
+    if (!s1)
+        return (0);
+    i = 0;
+    buf = getbuf(s1, set);
+    while (ft_isset(*s1, set))
+        s1 ++;
+    ret = (char *)malloc(sizeof(char) * buf);
+    if (ret)
+    {
+        while (i < buf - 1)
+        {
+            ret[i] = *s1;
+            i ++;
+            s1 ++;
+        }
+        ret[i] = 0;
+    }
+    return (ret);
 }

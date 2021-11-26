@@ -6,7 +6,7 @@
 /*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 18:41:44 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/23 21:46:48 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 01:15:15 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ static int	getbuf(int n)
 char	*ft_itoa(int n)
 {
 	int		buf;
-	int		temp;
+	long	temp;
 	char	*ret;
 	
 	if (n >= 0)
 		temp = n;
 	else
-		temp = -n;
+		temp = -(long)n;
 	buf = getbuf(n);	
 	ret = (char *)malloc(sizeof(char) * buf);
 	if (ret)

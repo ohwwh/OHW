@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 12:22:00 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/22 12:25:47 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 01:17:02 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while (lst -> next)
-	   lst = lst -> next;
+	if (lst)
+	{
+		while (lst -> next)
+			lst = lst -> next;
+	}
 	return (lst);
 }

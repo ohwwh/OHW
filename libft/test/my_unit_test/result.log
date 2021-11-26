@@ -65,134 +65,21 @@ ft_calloc:     [OK] [OK] [OK] [OK] [OK]
 ft_strdup:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_substr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {protected}[OK] 
 ft_strjoin:    [OK] [OK] [OK] [OK] [OK] {protected}
-ft_strtrim:    [CRASH] [OK] [OK] [CRASH] [OK] [CRASH] [CRASH] [CRASH] [CRASH] {not protected}
-[crash]: your strtrim does not work with basic input
-Test code:
-	char *s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
-	char *s2 = "Hello \t  Please\n Trim me !";
-	char *ret = ft_strtrim(s1, " \n\t");
-
-	if (!strcmp(ret, s2))
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-
-[crash]: your strtrim does not work with full blank input
-Test code:
-	char *s1 = "  \t \t \n   \n\n\n\t";
-	char *s2 = "";
-	char *ret = ft_strtrim(s1, " \n\t");
-
-	if (!strcmp(ret, s2))
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-
-[crash]: your strtrim did not allocate the good size so the \0 test may be false
-Test code:
-	char *s1 = "\t   \n\n\n  \n\n\t    Hello \t  Please\n Trim me !\t\t\t\n  \t\t\t\t  ";
-	char *s2 = "Hello \t  Please\n Trim me !";
-	int r_size = strlen(s2);
-	int size;
-
-	ft_strtrim(s1, " \n\t");
-	size = get_last_malloc_size();
-	if (size == r_size + 1)
-		exit(TEST_SUCCESS);
-	exit(TEST_KO);
-
-
-[crash]: your strtrim does not allocate memory
-Test code:
-	char *s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
-	char *s2 = "Hello \t  Please\n Trim me !";
-	char *ret = ft_strtrim(s1, " \n\t");
-
-	if (!strcmp(ret, s2))
-	{
-		free(ret);
-		exit(TEST_SUCCESS);
-	}
-	free(ret);
-	exit(TEST_FAILED);
-
-
-[crash]: you dont protect your malloc return
-Test code:
-	char *s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
-
-	char *ret = ft_strtrim(s1, " \n\t");
-	if (ret == ((void *)0))
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-
-[crash]: your strtrim does not set \0 to the end of the string
-Test code:
-	char *s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
-	char *s2 = "Hello \t  Please\n Trim me !";
-
-	char *ret = ft_strtrim(s1, " \n\t");
-	if (!strcmp(s2, ret))
-	{
-		free(ret);
-		exit(TEST_SUCCESS);
-	}
-	free(ret);
-	exit(TEST_FAILED);
-
-
-ft_split:      [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [OK] {not protected}
-[crash]: you did not protect your split
-Test code:
-	char *s = "      split       this for   me  !       ";
-
-	char **result = ft_split(s, ' ');
-	if (!result)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-
-ft_itoa:       [OK] [OK] [OK] [FAILED] [OK] [OK] [OK] [OK] [OK] 
-[fail]: your itoa does not work with min int
-Test code:
-	char *i1 = ft_itoa((-2147483647 -1));
-
-	if (atoi(i1) != (-2147483647 -1))
-	{
-		exit(TEST_FAILED);
-	}
-	exit(TEST_SUCCESS);
-
-Diffs:
-        itoa: |-2147483648|
-     ft_itoa: |-./,),(-*,(|
-
-ft_strmapi:    [OK] [OK] [OK] [OK] [OK] {not protected}
+ft_strtrim:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {protected}
+ft_split:      [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {protected}
+ft_itoa:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
+ft_strmapi:    [OK] [OK] [OK] [OK] [OK] {protected}
 ft_putchar_fd: [OK] [OK] 
-ft_putstr_fd:  [OK] [OK] {not protected}
-ft_putendl_fd: [OK] [OK] {not protected}
+ft_putstr_fd:  [OK] [OK] {protected}
+ft_putendl_fd: [OK] [OK] {protected}
 ft_putnbr_fd:  [OK] [OK] [OK] [OK] [OK] 
 ft_lstnew:     [OK] [OK] [OK] [OK] 
 ft_lstadd_front: [OK] [OK] [OK] 
 ft_lstsize:    [OK] [OK] 
-ft_lstlast:    [OK] [CRASH] 
-[crash]: your lstlast does not work with basic input
-Test code:
-	t_list *l = ((void *)0);
-	t_list *expected;
-	t_list *actual;
-
-	expected = ((void *)0);
-	actual = ft_lstlast(l);
-	if (actual == expected)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-
+ft_lstlast:    [OK] [OK] 
 ft_lstadd_back:[OK] [OK] [OK] 
 ft_lstdelone:  [OK] 
 ft_lstclear:   [OK] [OK] [OK] 
 ft_lstiter:    [OK] {protected}
 ft_lstmap:     [OK] {protected}
-ft_striteri:   [OK] [OK] {not protected}
+ft_striteri:   [OK] [OK] {protected}
