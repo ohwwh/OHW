@@ -6,12 +6,11 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 01:45:01 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/23 01:47:26 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 16:57:05 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {

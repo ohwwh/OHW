@@ -6,33 +6,21 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 15:09:55 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/25 17:12:35 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 16:47:29 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-static int	ft_strlen(const char *str)
-{
-	int	len;
-
-	len = 0;
-	while (str[len] != '\0')
-		len++;
-	return (len);
-}
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		buf;
 	char	*ret;
 	int		i;
 
 	if (!s1 | !s2)
 		return (0);
 	i = 0;
-	buf = ft_strlen(s1) + ft_strlen(s2) + 1;
-	ret = (char *)malloc(sizeof(char) * buf);
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (ret)
 	{
 		while (*s1)
@@ -50,5 +38,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		ret[i] = 0;
 	}
 	return (ret);
-
 }

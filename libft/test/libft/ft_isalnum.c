@@ -6,17 +6,17 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:33:29 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/24 13:48:27 by hoh              ###   ########.fr       */
+/*   Updated: 2021/11/26 16:36:08 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isalnum(int c)
 {
 	if ('A' <= c && c <= 'Z')
-	  return (1);
+		return (1);
 	if ('a' <= c && c <= 'z')
-	  return (1);
+		return (1);
 	if ('0' <= c && c <= '9')
-	  return (1);
+		return (1);
 	return (0);
 }

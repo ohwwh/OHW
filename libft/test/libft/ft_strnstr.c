@@ -6,34 +6,25 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 09:44:58 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/23 17:24:57 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 20:07:13 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef unsigned int size_t;
+#include "libft.h"
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	i;
-	char	*find;
+	size_t	needlen;
 
+	needlen = ft_strlen(needle);
 	if (*needle == '\0')
 		return ((char *)haystack);
-	while (*haystack != '\0' && len > 0)
+	while (*haystack)
 	{
-		i = 0;
-		while (*haystack == needle[i])
-		{
-			if (i == 0)
-				find = (char *)haystack;
-			haystack ++;
-			len --;
-			i ++;
-			if (needle[i] == '\0')
-				return (find);
-			if (needle[i] != '\0' && (*haystack == '\0' | len == 0))
-				return (0);
-		}
+		if (len < needlen)
+			return (0);
+		if (!ft_strncmp(haystack, needle, needlen))
+			return ((char *)haystack);
 		haystack ++;
 		len --;
 	}

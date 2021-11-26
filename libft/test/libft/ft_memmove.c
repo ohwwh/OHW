@@ -6,13 +6,15 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:48:27 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/25 16:13:53 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 15:10:22 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memmove(void *dst, const void *src, unsigned int len)
+#include "libft.h"
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned int	i;
+	size_t	i;
 
 	if (dst < src)
 	{	

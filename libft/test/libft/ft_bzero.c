@@ -6,11 +6,11 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 23:46:25 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/16 17:15:06 by hoh              ###   ########.fr       */
+/*   Updated: 2021/11/26 15:05:34 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef unsigned int size_t;
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

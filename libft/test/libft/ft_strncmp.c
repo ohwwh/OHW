@@ -6,11 +6,11 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:58:51 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/24 15:00:30 by hoh              ###   ########.fr       */
+/*   Updated: 2021/11/26 19:56:32 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef unsigned int size_t;
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {	

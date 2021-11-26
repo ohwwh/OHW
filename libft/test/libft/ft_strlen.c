@@ -6,13 +6,15 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 21:33:36 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/23 22:33:35 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 15:19:54 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include "libft.h"
+
+size_t	ft_strlen(const char *str)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
 	while (str[len] != '\0')

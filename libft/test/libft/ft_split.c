@@ -6,48 +6,48 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:36:11 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/26 01:13:24 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 16:45:35 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int	wordcount(char const *s, char c)
 {
-    int	cnt;
+	int	cnt;
 
-    cnt = 0;
-    while (*s)
-    {
-        if (*s != c)
-        {
-            cnt ++;
-            while (*s && *s != c)
-                s ++;
-        }
-        else
-            s ++;
-    }
-    return (cnt);
+	cnt = 0;
+	while (*s)
+	{
+		if (*s != c)
+		{
+			cnt ++;
+			while (*s && *s != c)
+				s ++;
+		}
+		else
+			s ++;
+	}
+	return (cnt);
 }
 
 static int	wordlen(char const *s, char c)
 {
-    int	i;
+	int	i;
 
-    i = 0;
-    while (s[i] != c && s[i])
-        i ++;
-    return (i);
+	i = 0;
+	while (s[i] != c && s[i])
+		i ++;
+	return (i);
 }
 
-static char	*ft_strdup(const char *src, char c)
+static char	*ft_dup(const char *src, char c)
 {
 	int		i;
 	char	*ret;
 
 	ret = (char *)malloc((wordlen(src, c) + 1) * sizeof(char));
-	if (ret != 0)
+	if (ret)
 	{
 		i = 0;
 		while (src[i] && src[i] != c)
@@ -56,27 +56,26 @@ static char	*ft_strdup(const char *src, char c)
 			i ++;
 		}
 		ret[i] = 0;
-		return (ret);
 	}
-	return (0);
+	return (ret);
 }
 
 char	**ft_split(char const *s, char c)
 {
-    char	**ret;
+	char	**ret;
 	int		i;
 
 	if (!s)
 		return (0);
 	i = 0;
-    ret = (char **)malloc(sizeof(char *) * (wordcount(s, c) + 1));
-    if (ret)
+	ret = (char **)malloc(sizeof(char *) * (wordcount(s, c) + 1));
+	if (ret)
 	{	
 		while (*s)
 		{
 			if (*s != c && *s)
 			{
-				ret[i] = ft_strdup(s, c);           
+				ret[i] = ft_dup(s, c);
 				i ++;
 				s += wordlen(s, c);
 			}
@@ -85,5 +84,5 @@ char	**ft_split(char const *s, char c)
 		}
 		ret[i] = 0;
 	}
-    return (ret);
+	return (ret);
 }

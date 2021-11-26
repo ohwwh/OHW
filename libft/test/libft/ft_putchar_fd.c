@@ -6,12 +6,13 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:44:20 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/23 21:32:57 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 16:42:45 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+
+#include "libft.h"
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);	
+	write(fd, &c, 1);
 }

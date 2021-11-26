@@ -6,11 +6,11 @@
 /*   By: hoh <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 14:46:06 by hoh               #+#    #+#             */
-/*   Updated: 2021/11/23 21:49:40 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 15:07:36 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef unsigned int size_t;
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

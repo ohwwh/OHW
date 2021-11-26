@@ -6,12 +6,11 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:52:44 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/20 17:56:45 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/26 16:57:56 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 t_list	*ft_lstnew(void *content)
 {

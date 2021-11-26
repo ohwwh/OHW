@@ -6,13 +6,13 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:00:15 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/24 11:51:33 by hoh              ###   ########.fr       */
+/*   Updated: 2021/11/26 15:09:17 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef unsigned int size_t;
+#include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *restrict src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t	i;
 
