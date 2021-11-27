@@ -6,7 +6,7 @@
 #    By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/23 02:36:10 by ohw               #+#    #+#              #
-#    Updated: 2021/11/26 15:02:46 by hoh              ###   ########.fr        #
+#    Updated: 2021/11/27 14:42:16 by ohw              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,29 +34,29 @@ OBJS=${SRCS:.c=.o}
 
 OBJSBNS=${BONUS:.c=.o}
 
+ifdef WITH_BONUS
+    OBJ_FILES = $(OBJS) $(OBJSBNS)
+else
+    OBJ_FILES = $(OBJS)
+endif
+
 .PHONY: all clean fclean re
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
-	ar rc $@ $^
+$(NAME) : $(OBJ_FILES)
+	ar rc $(NAME) $(OBJ_FILES)
 
-bonus : $(OBJS) $(OBJSBNS)
-	ar rc $(NAME) $^
+bonus : 
+	make WITH_BONUS=1 all
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@ -I$(INCS)
 
 clean:
-	rm -f $(OBJS)
-
-bclean:
 	rm -f $(OBJS) $(OBJSBNS)
 
 fclean: clean
-	rm -f $(NAME)
-
-bfclean: bclean
 	rm -f $(NAME)
 
 re: fclean all

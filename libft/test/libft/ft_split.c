@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:36:11 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/26 16:45:35 by hoh              ###   ########.fr       */
+/*   Updated: 2021/11/28 01:34:53 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,20 @@ static char	*ft_dup(const char *src, char c)
 	return (ret);
 }
 
+static char	**ft_clear(char **ret, int index)
+{
+	int		i;
+
+	i = 0;
+	while (i < index)
+	{	
+		free(ret[i]);
+		i ++;
+	}
+	free(ret);
+	return (0);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**ret;
@@ -76,6 +90,8 @@ char	**ft_split(char const *s, char c)
 			if (*s != c && *s)
 			{
 				ret[i] = ft_dup(s, c);
+				if (!ret[i])
+					return (ft_clear(ret, i));
 				i ++;
 				s += wordlen(s, c);
 			}

@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 12:09:58 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/26 15:14:46 by hoh              ###   ########.fr       */
+/*   Updated: 2021/11/28 01:02:06 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,11 @@ char	*ft_strdup(char *src)
 	int		i;
 	char	*ret;
 
-	i = 0;
-	while (src[i] != 0)
-		i ++;
-	ret = (char *)malloc((i + 1) * sizeof(char));
-	if (ret != 0)
+	ret = (char *)malloc((ft_strlen(src) + 1) * sizeof(char));
+	if (ret)
 	{
 		i = 0;
-		while (src[i] != 0)
+		while (src[i])
 		{
 			ret[i] = src[i];
 			i ++;

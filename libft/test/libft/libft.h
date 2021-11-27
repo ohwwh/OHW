@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:47:29 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/26 17:03:28 by hoh              ###   ########.fr       */
+/*   Updated: 2021/11/27 15:00:13 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # define LONG_MAX 9223372036854775807
-# define LONG_MIN -9223372036854775808
+# define LONG_MIN -9223372036854775808U
 
 typedef struct s_list{
 	void			*content;

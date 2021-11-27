@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 21:43:43 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/26 16:34:35 by hoh              ###   ########.fr       */
+/*   Updated: 2021/11/27 15:01:30 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,25 +53,26 @@ static int	longmax(long long ret, int n, int i, const char *str)
 	if (i == 19)
 	{
 		if (ret > (LONG_MAX) / 10)
-			return ((int)LONG_MAX);
+		{
+			if (n == 1)
+				return ((int)LONG_MAX);
+			return ((int)LONG_MIN);
+		}
 		else if (ret == (LONG_MAX) / 10)
 		{
 			if (n == -1 && *str - 48 >= 8)
-				return (0);
+				return ((int)LONG_MIN);
 			else if (n == 1 && *str - 48 > 7)
 				return ((int)LONG_MAX);
-			else
-				return (0);
-		}
-		else
 			return (0);
+		}
+		return (0);
 	}
 	else
 	{
 		if (n == -1)
-			return (0);
-		else
-			return ((int)LONG_MAX);
+			return ((int)LONG_MIN);
+		return ((int)LONG_MAX);
 	}
 }
 
