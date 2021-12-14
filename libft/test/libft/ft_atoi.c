@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 21:43:43 by ohw               #+#    #+#             */
-/*   Updated: 2021/11/27 15:01:30 by ohw              ###   ########.fr       */
+/*   Updated: 2021/11/30 20:02:42 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	ft_atoi(const char *str)
 	n = pm(&str);
 	while (48 <= *str && *str <= 57)
 	{	
-		i ++;
+LONG_MAX		i ++;
 		if (i >= 19 && !ispass(ret, n, i, str))
 			return (longmax(ret, n, i, str));
 		ret *= 10;
