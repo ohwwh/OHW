@@ -6,27 +6,38 @@
 
 int main(void)
 {
-    char    *ret;
-    int     fd;
-
-    fd = open("/Users/ohw/42git/gnl/file", O_RDONLY);
-    ret = get_next_line(fd);
-    for(int i = 0; i < 15; i ++)
-        printf("%c", ret[i]);
-    free(ret);
-    ret = get_next_line(fd);
-    for(int i = 0; i < 17; i ++)
-        printf("%c", ret[i]);
-    free(ret);
-    ret = get_next_line(fd);
-    for(int i = 0; i < 12; i ++)
-        printf("%c", ret[i]);
-    free(ret);
-    /*ret = get_next_line(fd);
+     char    *ret;
+    int     fd[2];
+    fd[0] = open("/Users/ohw/42git/ohw/gnl/file", O_RDONLY);
+    ret = get_next_line(fd[0]);
     printf("%s", ret);
-    //free(ret);
-    ret = get_next_line(fd);
+    free(ret);
+    fd[1] = open("/Users/ohw/42git/ohw/gnl/testfile", O_RDONLY);
+    //char c = 0; read(fd, &c, 1); printf("%c", c);
+    ret = get_next_line(fd[1]);
     printf("%s", ret);
-    //free(ret);*/
-    //파일의 문자열에 개행문자가 없이 끝나는 경우
+    free(ret);
+    ret = get_next_line(fd[0]);
+    printf("%s", ret);
+    free(ret);
+    ret = get_next_line(fd[1]);
+    printf("%s", ret);
+    free(ret);
+    ret = get_next_line(fd[0]);
+    printf("%s", ret);
+    free(ret);
+    ret = get_next_line(4);
+    printf("%s", ret);
+    free(ret);
+    ret = get_next_line(fd[0]);
+    printf("%s", ret);
+    free(ret);
+    ret = get_next_line(fd[1]);
+    printf("%s", ret);
+    free(ret);
+    ret = get_next_line(fd[0]);
+    printf("%s", ret);
+    free(ret);
+	while (1);
+    //파일의 문자열에 개행문자가 없이 끝나는 경우	while (1);
 }

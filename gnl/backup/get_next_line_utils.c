@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 02:04:21 by ohw               #+#    #+#             */
-/*   Updated: 2021/12/17 15:17:13 by ohw              ###   ########.fr       */
+/*   Updated: 2021/12/16 01:41:23 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ char	*ft_strdup(char *src)
 	int		i;
 	char	*ret;
 
+
+	if (!*src)
+		return (0);
 	ret = (char *)malloc((ft_strlen(src) + 1) * sizeof(char));
 	if (ret)
 	{
@@ -70,6 +73,34 @@ char	*ft_strdup(char *src)
 		return (ret);
 	}
 	return (0);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	char	*ret;
+	int		i;
+
+	if (!s1 && !s2)
+		return (0);
+	i = 0;
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (ret)
+	{
+		while (s1 && *s1)
+		{
+			ret[i] = *s1;
+			i ++;
+			s1 ++;
+		}
+		while (s2 && *s2)
+		{
+			ret[i] = *s2;
+			i ++;
+			s2 ++;
+		}
+		ret[i] = 0;
+	}
+	return (ret);
 }
 
 char	*ft_strchr(const char *s, int c)
