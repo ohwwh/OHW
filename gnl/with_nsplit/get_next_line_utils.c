@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 02:04:21 by ohw               #+#    #+#             */
-/*   Updated: 2021/12/16 01:41:23 by ohw              ###   ########.fr       */
+/*   Updated: 2021/12/18 13:44:33 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,16 @@ size_t	ft_strlen(char *str)
 	return (len);
 }
 
-char	*ft_strncpy(char *dst, char *src, size_t n)
+size_t	ft_strnlen(char *str)
 {
-	size_t	i;
+	size_t	len;
 
-	i = 0;
-	while (i < n && src[i])
-	{
-		dst[i] = src[i];
-		i ++;
-	}
-	while (i < n)
-	{
-		dst[i] = 0;
-		i ++;
-	}
-	return (dst);
+	len = 0;
+	while (str && str[len] && str[len] != '\n')
+		len++;
+	if (str && str[len] == '\n')
+		len ++;
+	return (len);
 }
 
 void	ft_bzero(void *s, size_t n)
@@ -52,19 +46,16 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-char	*ft_strdup(char *src)
+char	*ft_strndup(char *src, size_t n)
 {
-	int		i;
+	size_t	i;
 	char	*ret;
 
-
-	if (!*src)
-		return (0);
-	ret = (char *)malloc((ft_strlen(src) + 1) * sizeof(char));
+	ret = (char *)malloc((n + 1) * sizeof(char));
 	if (ret)
 	{
 		i = 0;
-		while (src && src[i])
+		while (src && i < n)
 		{
 			ret[i] = src[i];
 			i ++;
@@ -73,34 +64,6 @@ char	*ft_strdup(char *src)
 		return (ret);
 	}
 	return (0);
-}
-
-char	*ft_strjoin(char *s1, char *s2)
-{
-	char	*ret;
-	int		i;
-
-	if (!s1 && !s2)
-		return (0);
-	i = 0;
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (ret)
-	{
-		while (s1 && *s1)
-		{
-			ret[i] = *s1;
-			i ++;
-			s1 ++;
-		}
-		while (s2 && *s2)
-		{
-			ret[i] = *s2;
-			i ++;
-			s2 ++;
-		}
-		ret[i] = 0;
-	}
-	return (ret);
 }
 
 char	*ft_strchr(const char *s, int c)

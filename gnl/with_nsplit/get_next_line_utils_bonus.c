@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 02:04:21 by ohw               #+#    #+#             */
-/*   Updated: 2021/12/18 14:55:52 by ohw              ###   ########.fr       */
+/*   Updated: 2021/12/18 13:44:58 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,11 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-char	*ft_strndup(char *src, size_t n, int flag)
+char	*ft_strndup(char *src, size_t n)
 {
 	size_t	i;
 	char	*ret;
 
-	if (src && !*src)
-	{
-		if (flag)
-			free(src);
-		return (0);
-	}	
 	ret = (char *)malloc((n + 1) * sizeof(char));
 	if (ret)
 	{
@@ -67,8 +61,6 @@ char	*ft_strndup(char *src, size_t n, int flag)
 			i ++;
 		}
 		ret[i] = '\0';
-		if (flag)
-			free(src);
 		return (ret);
 	}
 	return (0);

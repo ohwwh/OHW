@@ -38,6 +38,4 @@ int main(void)
     ret = get_next_line(fd[0]);
     printf("%s", ret);
     free(ret);
-	while (1);
-    //파일의 문자열에 개행문자가 없이 끝나는 경우	while (1);
 }

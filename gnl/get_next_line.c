@@ -6,11 +6,11 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 21:43:31 by ohw               #+#    #+#             */
-/*   Updated: 2021/12/17 15:32:26 by ohw              ###   ########.fr       */
+/*   Updated: 2021/12/18 14:26:58 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 t_node	*find_create_node(int fd, t_node **lst)
 {
@@ -23,19 +23,15 @@ t_node	*find_create_node(int fd, t_node **lst)
 	if (!target || (target -> fd != fd && !(target -> next)))
 	{
 		newnode = (t_node *)malloc(sizeof(t_node));
+		if (!newnode)
+			return (0);
+		ft_bzero(newnode, sizeof(t_node));
 		newnode -> fd = fd;
-		newnode -> start = 0;
-		newnode -> next = 0;
 		if (target && !(target -> next))
-		{
 			target -> next = newnode;
-			target = target -> next;
-		}
 		else
-		{
 			*lst = newnode;
-			target = newnode;
-		}
+		target = newnode;
 	}
 	return (target);
 }
@@ -53,7 +49,6 @@ void	delete_node(t_node **lst, int fd)
 	{
 		prev = *lst;
 		*lst = (*lst)-> next;
-		free(prev -> start);
 		free(prev);
 		return ;
 	}
@@ -77,11 +72,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (ret)
 	{
-		while (s1 && *s1)
+		while (s1 && s1[i])
 		{
-			ret[i] = *s1;
+			ret[i] = s1[i];
 			i ++;
-			s1 ++;
 		}
 		while (s2 && *s2)
 		{
@@ -90,34 +84,8 @@ char	*ft_strjoin(char *s1, char *s2)
 			s2 ++;
 		}
 		ret[i] = 0;
+		free(s1);
 	}
-	return (ret);
-}
-
-char	*ft_nsplit(char *src, char **start)
-{
-	char	*ret;
-	char	*tmpfree;
-	int		i;
-
-	if (!src | !*src)
-		return (0);
-	i = 0;
-	while (src[i])
-	{
-		if (src[i] == '\n')
-		{
-			i ++;
-			break ;
-		}
-		i ++;
-	}
-	ret = (char *)malloc(sizeof(char) * (i + 1));
-	ft_strncpy(ret, src, i);
-	ret[i] = 0;
-	tmpfree = *start;
-	*start = ft_strdup(&src[i]);
-	free(tmpfree);
 	return (ret);
 }
 
@@ -127,23 +95,21 @@ char	*get_next_line(int fd)
 	t_node			*start;
 	char			temp[BUFFER_SIZE + 1];
 	char			*ret;
-	char			*tmpfree;
+	int				i;
 
-	if ((BUFFER_SIZE == -1) | (!BUFFER_SIZE))
-		return (0);
 	start = find_create_node(fd, &lst);
-	ret = ft_strdup(start -> start);
+	if ((BUFFER_SIZE == -1) | (!BUFFER_SIZE) | !start)
+		return (0);
+	ret = ft_strndup(start -> chunk, ft_strlen(start -> chunk), 1);
 	ft_bzero(temp, sizeof(char) * (BUFFER_SIZE + 1));
 	while (ret && !ft_strchr(ret, '\n') && read(fd, temp, BUFFER_SIZE) > 0)
 	{
-		tmpfree = ret;
 		ret = ft_strjoin(ret, temp);
-		free(tmpfree);
 		ft_bzero(temp, sizeof(char) * (BUFFER_SIZE + 1));
 	}
-	tmpfree = ret;
-	ret = ft_nsplit(ret, &(start -> start));
-	free(tmpfree);
+	i = ft_strnlen(ret);
+	start -> chunk = ft_strndup(&ret[i], ft_strlen(&ret[i]), 0);
+	ret = ft_strndup(ret, i, 1);
 	if (!ret)
 		delete_node(&lst, fd);
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 21:43:31 by ohw               #+#    #+#             */
-/*   Updated: 2021/12/18 14:28:04 by ohw              ###   ########.fr       */
+/*   Updated: 2021/12/18 13:27:36 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	delete_node(t_node **lst, int fd)
 	{
 		prev = *lst;
 		*lst = (*lst)-> next;
+		free(prev -> chunk);
 		free(prev);
 		return ;
 	}
@@ -58,6 +59,7 @@ void	delete_node(t_node **lst, int fd)
 		target = target -> next;
 	}
 	prev -> next = target -> next;
+	free(target -> chunk);
 	free(target);
 }
 
@@ -89,28 +91,44 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (ret);
 }
 
+char	*ft_nsplit(char *src, char **chunk)
+{
+	char	*ret;
+	int		i;
+
+	if (!src)
+		return (0);
+	i = ft_strnlen(src);
+	free(*chunk);
+	*chunk = ft_strndup(&src[i], ft_strlen(&src[i]));
+	ret = ft_strndup(src, i);
+	free(src);
+	return (ret);
+}
+
 char	*get_next_line(int fd)
 {
 	static t_node	*lst;
 	t_node			*start;
 	char			temp[BUFFER_SIZE + 1];
 	char			*ret;
-	int				i;
 
 	start = find_create_node(fd, &lst);
 	if ((BUFFER_SIZE == -1) | (!BUFFER_SIZE) | !start)
 		return (0);
-	ret = ft_strndup(start -> chunk, ft_strlen(start -> chunk), 1);
+	ret = ft_strndup(start -> chunk, ft_strlen(start -> chunk));
 	ft_bzero(temp, sizeof(char) * (BUFFER_SIZE + 1));
 	while (ret && !ft_strchr(ret, '\n') && read(fd, temp, BUFFER_SIZE) > 0)
 	{
 		ret = ft_strjoin(ret, temp);
 		ft_bzero(temp, sizeof(char) * (BUFFER_SIZE + 1));
 	}
-	i = ft_strnlen(ret);
-	start -> chunk = ft_strndup(&ret[i], ft_strlen(&ret[i]), 0);
-	ret = ft_strndup(ret, i, 1);
-	if (!ret)
+	ret = ft_nsplit(ret, &(start -> chunk));
+	if (!ret | !*ret)
+	{
+		free(ret);
+		ret = 0;
 		delete_node(&lst, fd);
+	}
 	return (ret);
 }
