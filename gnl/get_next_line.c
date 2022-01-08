@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 21:43:31 by ohw               #+#    #+#             */
-/*   Updated: 2021/12/18 14:26:58 by ohw              ###   ########.fr       */
+/*   Updated: 2021/12/20 18:47:38 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,12 @@ char	*get_next_line(int fd)
 		ret = ft_strjoin(ret, temp);
 		ft_bzero(temp, sizeof(char) * (BUFFER_SIZE + 1));
 	}
-	i = ft_strnlen(ret);
-	start -> chunk = ft_strndup(&ret[i], ft_strlen(&ret[i]), 0);
-	ret = ft_strndup(ret, i, 1);
+	if (ret)
+	{
+		i = ft_strnlen(ret);
+		start -> chunk = ft_strndup(&ret[i], ft_strlen(&ret[i]), 0);
+		ret = ft_strndup(ret, i, 1);
+	}
 	if (!ret)
 		delete_node(&lst, fd);
 	return (ret);
