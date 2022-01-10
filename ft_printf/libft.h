@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:47:29 by ohw               #+#    #+#             */
-/*   Updated: 2021/12/29 17:39:19 by ohw              ###   ########.fr       */
+/*   Updated: 2022/01/10 18:35:38 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_printf(const char *fmt, ...);
-int checkbase(const char *base);
-int	isbase(char c, const char *base);
-int power(int n, int x);
+int		checkbase(const char *base);
+int		isbase(char c, const char *base);
+int		power(int n, int x);
 
 #endif
