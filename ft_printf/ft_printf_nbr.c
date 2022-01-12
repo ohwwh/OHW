@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 14:59:50 by ohw               #+#    #+#             */
-/*   Updated: 2022/01/10 18:28:24 by ohw              ###   ########.fr       */
+/*   Updated: 2022/01/10 18:44:44 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,11 +143,11 @@ int	nbr(va_list *app, const char **fmt, t_tag tag)
 		ret = print_di(tag, nbr);
 	}
 	else if (**fmt == 'u')
-		ret = print_u(tag, (long)((unsigned int)(va_arg(*app, long))));
+		ret = print_u(tag, (long)(va_arg(*app, unsigned int)));
 	else if (**fmt == 'x')
-		ret = print_x(tag, (long)((unsigned int)(va_arg(*app, long))));
+		ret = print_x(tag, (long)(va_arg(*app, unsigned int)));
 	else
-		ret = print_upper_x(tag, (long)((unsigned int)(va_arg(*app, long))));
+		ret = print_upper_x(tag, (long)(va_arg(*app, unsigned int)));
 	(*fmt)++;
 	return (ret);
 }
