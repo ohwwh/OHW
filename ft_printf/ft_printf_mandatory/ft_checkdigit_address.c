@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   checkdigit_address.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 02:07:58 by ohw               #+#    #+#             */
-/*   Updated: 2021/12/18 14:22:32 by ohw              ###   ########.fr       */
+/*   Created: 2022/01/06 14:45:22 by ohw               #+#    #+#             */
+/*   Updated: 2022/01/06 17:05:14 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <unistd.h>
-# include <stdlib.h>
+#include "ft_printf.h"
 
-size_t	ft_strlen(char *str);
-size_t	ft_strnlen(char *str);
-void	ft_bzero(void *s, size_t n);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strndup(char *src, size_t n);
-char	*ft_strchr(const char *s, int c);
-char	*get_next_line(int fd);
+static int check(unsigned long n, int digit)
+{
+	if (n == 0)
+		return (digit);
+	return (check(n / 16, digit + 1));
+}
 
-#endif
+int ft_checkdigit_address(void *p)
+{
+	unsigned long n;
+
+	n = (unsigned long)p;
+	if (!n)
+		return (1);
+	else
+		return (check(n, 0));
+}

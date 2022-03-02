@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 21:43:31 by ohw               #+#    #+#             */
-/*   Updated: 2022/02/11 15:14:50 by ohw              ###   ########.fr       */
+/*   Updated: 2021/12/20 18:49:00 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	*get_next_line(int fd)
 	int				i;
 
 	start = find_create_node(fd, &lst);
-	if ((BUFFER_SIZE <= -1) | !start)
+	if ((BUFFER_SIZE == -1) | (!BUFFER_SIZE) | !start)
 		return (0);
 	ret = ft_strndup(start -> chunk, ft_strlen(start -> chunk), 1);
 	ft_bzero(temp, sizeof(char) * (BUFFER_SIZE + 1));

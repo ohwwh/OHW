@@ -46,13 +46,17 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-char	*ft_strndup(char *src, size_t n)
+char	*ft_strndup(char *src, size_t n, int flag)
 {
 	size_t	i;
 	char	*ret;
 
 	if (src && !*src)
+	{
+		if (flag)
+			free(src);
 		return (0);
+	}
 	ret = (char *)malloc((n + 1) * sizeof(char));
 	if (ret)
 	{
@@ -62,7 +66,9 @@ char	*ft_strndup(char *src, size_t n)
 			ret[i] = src[i];
 			i ++;
 		}
-		ret[i] = 0;
+		ret[i] = '\0';
+		if (flag)
+			free(src);
 		return (ret);
 	}
 	return (0);

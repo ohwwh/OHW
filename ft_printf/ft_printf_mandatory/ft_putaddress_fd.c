@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putaddress_fd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 02:07:58 by ohw               #+#    #+#             */
-/*   Updated: 2021/12/18 14:22:32 by ohw              ###   ########.fr       */
+/*   Created: 2021/11/20 17:22:26 by ohw               #+#    #+#             */
+/*   Updated: 2022/01/06 14:38:35 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <unistd.h>
-# include <stdlib.h>
+#include "ft_printf.h"
 
-size_t	ft_strlen(char *str);
-size_t	ft_strnlen(char *str);
-void	ft_bzero(void *s, size_t n);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strndup(char *src, size_t n);
-char	*ft_strchr(const char *s, int c);
-char	*get_next_line(int fd);
+static void	print(void *p, int fd)
+{
+	char			c;
+	unsigned long	p2;
 
-#endif
+	p2 = (unsigned long)p;
+	if (p2 == 0)
+		return ;
+	print((void *)(p2 / 16), fd);
+	if (p2 % 16 < 10)
+		c = p2 % 16 + '0';
+	else
+		c = p2 % 16 + 87;
+	write(fd, &c, 1);
+}
+
+void	ft_putaddress_fd(void *p, int fd)
+{
+	write(1, "0x", 2);
+	if (!p)
+		write(1, "0", 1);
+	else
+		print(p, fd);
+}
