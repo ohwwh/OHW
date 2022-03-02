@@ -125,7 +125,7 @@ void	reverse_rotate(t_list **lst)
     *lst = (*lst) -> prev;
 }
 
-t_list  *search(t_list *lstA, int index)
+t_list  *search(t_list *lst, int index)
 {
     int i;
 
@@ -134,7 +134,7 @@ t_list  *search(t_list *lstA, int index)
     {
         while (i < index)
         {
-            lstA = lstA -> next;
+            lst = lst -> next;
             i ++;
         }
     }
@@ -142,11 +142,28 @@ t_list  *search(t_list *lstA, int index)
     {
         while (i < -index)
         {
-            lstA = lstA -> prev;
+            lst = lst -> prev;
             i ++;
         }
     }
-    return (lstA);
+    return (lst);
+}
+
+int get_size(t_list *lst)
+{
+    int     size;
+    t_list  *org;
+
+    size = 0;
+    org = lst;
+    while (1)
+    {
+        lst = lst -> next;
+        size ++;
+        if (lst -> next == org)
+            break ;
+    }
+    return (size);
 }
 
 void	swap(int *a, int *b)
@@ -466,7 +483,7 @@ void print_greedy(int *arr, t_list **lstA, t_list **lstB, int size)
     }
 }
 
-int count(t_list *lstA, int num, int size) //num을 lstA에 끼워넣으려면 몇 개의 명령어를 실행해야 하는가
+int count(t_list *lstA, int num, int sizeA) //num을 lstA에 정렬해서 끼워넣기 위해,  lstA를 몇번 회전 시켜야 하는가?
 {
     int i;
     int j;
@@ -479,7 +496,7 @@ int count(t_list *lstA, int num, int size) //num을 lstA에 끼워넣으려면 �
     {
         lstA = lstA -> next;
         i ++;
-        if (i - 1 >= size / 2)
+        if (i > sizeA)
             break ;
     }
     lstA = org -> prev;
@@ -487,16 +504,16 @@ int count(t_list *lstA, int num, int size) //num을 lstA에 끼워넣으려면 �
     {
         lstA = lstA -> prev;
         j ++;
-        if (j - 1 > size / 2)
+        if (j > sizeA)
             break ;
     }
-    if (i <= j)
+    if (2 * i + 1 <= 2 * j + 2)
         return (i);
     else
         return (-j);
 }
 
-int opt(t_list *lstA, t_list *lstB, int size) //lstB에서 몇번째 인덱스에 있는 원소가 가장 적은 명령어 갯수를 가지면서 lstA로 옮겨질 수 있는가
+int opt(t_list *lstA, t_list *lstB, int sizeA, int sizeB) //lstB에서 몇번째 인덱스에 있는 원소가 가장 적은 명령어 갯수를 가지면서 lstA로 옮겨질 수 있는가
 {
     int min1;
     int i;
@@ -504,44 +521,42 @@ int opt(t_list *lstA, t_list *lstB, int size) //lstB에서 몇번째 인덱스�
     int j;
     int k;
     int m;
-    t_list  *org;
 
-    org = lstB;
-    i = 1;
+    i = 0;
     min1 = 9999;
     min2 = 9999;
     while (1)
     {
-        m = count(lstA, lstB -> content, size);
-        if (m >= 0)
-            m = bigger(m, i);
+        m = count(lstA, lstB -> content, sizeA);
+        if (m >= 0 && m != 1)
+            m = bigger(m - 1, i) + m - 1;
         else
-            m = abs(m) + i;
+            m = 2 * abs(m) - 1 + i;
         if (m < min1)
         {
             min1 = m;
             j = i;
         }
         lstB = lstB -> next;
-        if (lstB == org)
+        if (i >= sizeB)
             break;
         i ++;
     }
     i = 1;
     while (1)
     {
-        m = count(lstA, lstB -> content, size);
+        m = count(lstA, lstB -> content, sizeA);
         if (m < 0)
-            m = bigger(abs(m), i);
+            m = bigger(abs(m) - 1, i) + abs(m) - 1;
         else
-            m = m + i;
+            m = 2 * m - 1 + i;
         if (m < min2)
         {
             min2 = m;
-            k = size - 1 - i;
+            k = i;
         }
         lstB = lstB -> prev;
-        if (lstB == org)
+        if (i - 1 >= sizeB)
             break;
         i ++;
     }
@@ -551,29 +566,32 @@ int opt(t_list *lstA, t_list *lstB, int size) //lstB에서 몇번째 인덱스�
         return (-k);
 }
 
-void print_greedy2(int *arr, t_list **lstA, t_list **lstB, int size)
+void print_greedy2(int *arr, t_list **lstA, t_list **lstB, int sizeA, int sizeB)
 {
     int i;
     int j;
     int k;
 
-    i = 1;
-    j = 1;
     k = 0;
-    if (size == 2)
+    if (sizeA == 2)
         print2(arr, lstA);
-    else if (size == 3)
+    else if (sizeA == 3)
         print3(arr, lstA);
     else
     {
         printf("pb\n");
         push((*lstA) -> content, lstB);
         pop(lstA);
-        print_greedy2(arr + 1, lstA, lstB, size - 1);
-        ft_sort_int_tab(arr + 1, size - 1);
-        i = opt(*lstA, *lstB, size);
-        j = count(*lstA, arr[i], size);
-        if (i >= 0)
+        print_greedy2(arr + 1, lstA, lstB, sizeA - 1, sizeB + 1);
+        i = opt(*lstA, *lstB, sizeA - 1, sizeB + 1);
+        j = count(*lstA, search(*lstB, i) -> content, sizeA - 1);
+
+
+
+
+
+
+        if (i >= 0 && j != 0)
         {
             if (j >= 0)
             {
@@ -588,8 +606,8 @@ void print_greedy2(int *arr, t_list **lstA, t_list **lstB, int size)
                 {
                     while (k < j)
                     {
-                        printf("rb\n");
-                        rotate(lstB);
+                        printf("ra\n");
+                        rotate(lstA);
                         k ++;
                     }
                 }
@@ -597,49 +615,47 @@ void print_greedy2(int *arr, t_list **lstA, t_list **lstB, int size)
                 {
                     while (k < i)
                     {
-                        printf("ra\n");
-                        rotate(lstA);
+                        printf("rb\n");
+                        rotate(lstB);
                         k ++;
                     }
                 }
-                printf("pa\n");
             }
             else
             {
                 k = 0;
                 while (k < i)
                 {
-                    printf("ra\n");
-                    rotate(lstA);
+                    printf("rb\n");
+                    rotate(lstB);
                     k ++;
                 }
                 k = 0;
-                while (k < j)
+                while (k < abs(j) - 1)
                 {
-                    printf("rrb\n");
-                    reverse_rotate(lstB);
+                    printf("rra\n");
+                    reverse_rotate(lstA);
                     k ++;
                 }
-                printf("pa\n");
             }
         }
-        else
+        else if (j != 0)
         {
             if (j < 0)
             {
-                while (k < abs(bigger(i, j)))
+                while (k < abs(bigger(i, j + 1)))
                 {
                     printf("rrr\n");
                     reverse_rotate(lstA);
                     reverse_rotate(lstB);
                     k ++;
                 }
-                if (i >= j)
+                if (i >= j + 1)
                 {
-                    while (k < abs(j))
+                    while (k < abs(j + 1))
                     {
-                        printf("rrb\n");
-                        reverse_rotate(lstB);
+                        printf("rra\n");
+                        reverse_rotate(lstA);
                         k ++;
                     }
                 }
@@ -647,30 +663,73 @@ void print_greedy2(int *arr, t_list **lstA, t_list **lstB, int size)
                 {
                     while (k < abs(i))
                     {
-                        printf("rra\n");
-                        reverse_rotate(lstA);
+                        printf("rrb\n");
+                        reverse_rotate(lstB);
                         k ++;
                     }
                 }
-                printf("pa\n");
             }
             else
             {
                 k = 0;
                 while (k < abs(i))
                 {
-                    printf("rra\n");
-                    reverse_rotate(lstA);
+                    printf("rrB\n");
+                    reverse_rotate(lstB);
                     k ++;
                 }
                 k = 0;
                 while (k < j)
                 {
-                    printf("rb\n");
-                    rotate(lstB);
+                    printf("ra\n");
+                    rotate(lstA);
                     k ++;
                 }
-                printf("pa\n");
+            }
+        }
+
+
+
+
+
+
+
+
+
+        printf("pa\n");
+        push((*lstB) -> content, lstA);
+        pop(lstB);
+        if (j == 0)
+        {
+            printf("sa\n");
+            swap_stack(lstA);
+        }
+
+
+
+
+
+
+
+
+        k = 0;
+        if (j >= 0 && j != 0)
+        {
+            while (k < j)
+            {
+                printf("rra\n");
+                reverse_rotate(lstA);
+                k ++;
+            }
+        }
+        else if (j != 0)
+        {
+            k = 0;
+            while (k < abs(j))
+            {
+                printf("ra\n");
+                rotate(lstA);
+                k ++;
             }
         }
     }
@@ -711,9 +770,9 @@ int main(int argc, char *argv[])
         j = atoi(argv[argc - 1 - i]);
         arr[argc - 2 - i] = j;
         push(j, &A);
-        //j = rand() % 100;
-        //arr[argc - 2 - i] = j;
-        //push(j, &A);
+        /*j = rand() % 5;
+        arr[argc - 2 - i] = j;
+        push(j, &A);*/
         j = 0;
         while (j < i)
         {
@@ -726,7 +785,7 @@ int main(int argc, char *argv[])
     //main1(A, B);
     print_stack(A);
     printf("\n");
-    print_greedy2(arr, &A, &B, argc - 1);
+    print_greedy2(arr, &A, &B, argc - 1, 0);
     //print_quicksort(arr, &A, &B, 10);
     print_stack(A);
     printf("\n");
