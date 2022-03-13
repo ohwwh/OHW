@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 15:22:45 by ohw               #+#    #+#             */
-/*   Updated: 2022/03/02 18:47:52 by hoh              ###   ########.fr       */
+/*   Updated: 2022/03/05 02:21:03 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 	srand(time(0));
 	for (int i = 0; i < n; i ++)
 	{
-		j = rand() % 5;
+		j = rand() % n;
 		arr[i] = j;
 		j = 0;
 		while (j < i)
