@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 17:36:29 by ohw               #+#    #+#             */
-/*   Updated: 2022/03/13 14:46:36 by hoh              ###   ########.fr       */
+/*   Updated: 2022/03/13 14:46:23 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 int	execute(char *command, t_list **lstA, t_list **lstB)
 {
-	if (!command)
-		return (1);
-	else if (!ft_strcmp(command, "sa\n") | !ft_strcmp(command, "sb\n"))
+	if (!ft_strcmp(command, "sa\n") | !ft_strcmp(command, "sb\n"))
 		return (execute_non_rotate(command, lstA, lstB));
 	else if (!ft_strcmp(command, "ss\n"))
 		return (execute_non_rotate(command, lstA, lstB));
@@ -54,7 +52,6 @@ int	execute_non_rotate(char *command, t_list **lstA, t_list **lstB)
 		push((*lstA)->content, lstB, lstA);
 		pop(lstA);
 	}
-	free(command);
 	return (0);
 }
 
@@ -78,6 +75,5 @@ int	execute_rotate(char *command, t_list **lstA, t_list **lstB)
 		reverse_rotate(lstA);
 		reverse_rotate(lstB);
 	}
-	free(command);
 	return (0);
 }
