@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:16:33 by ohw               #+#    #+#             */
-/*   Updated: 2022/03/12 02:26:53 by ohw              ###   ########.fr       */
+/*   Updated: 2022/03/13 13:23:37 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char *argv[])
 	t_list	*a;
 	t_list	*b;
 
-	if (argc == 1 | argc == 2)
+	if (argc == 1)
 		return (0);
 	i = 0;
 	while (i ++ < argc - 1)

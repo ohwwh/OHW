@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:07:11 by ohw               #+#    #+#             */
-/*   Updated: 2022/03/10 14:12:12 by ohw              ###   ########.fr       */
+/*   Updated: 2022/03/13 12:40:11 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	opt_front(t_list *lstA, t_list *lstB, int sizeA, int state)
 	int			i;
 	int			j;
 	int			m;
-	const int	sizeb = get_size(lstB) + 1;
+	const int	sizeb = get_size(lstB);
 
 	i = 0;
 	min = 99999;
@@ -87,7 +87,7 @@ int	opt_reverse(t_list *lstA, t_list *lstB, int sizeA, int state)
 	int			i;
 	int			j;
 	int			m;
-	const int	sizeb = get_size(lstB) + 1;
+	const int	sizeb = get_size(lstB);
 
 	i = 1;
 	min = 99999;
