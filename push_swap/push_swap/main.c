@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:16:33 by ohw               #+#    #+#             */
-/*   Updated: 2022/03/13 13:23:37 by hoh              ###   ########.fr       */
+/*   Updated: 2022/03/14 20:21:57 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	process_final(t_list **A, int size)
 	int	j;
 
 	i = 0;
-	j = count_sorted(*A, size);
+	j = count_state(*A, size);
 	if (size / 2 < j)
 	{
 		j = size - j;

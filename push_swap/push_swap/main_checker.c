@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 01:18:31 by ohw               #+#    #+#             */
-/*   Updated: 2022/03/13 11:46:42 by ohw              ###   ########.fr       */
+/*   Updated: 2022/03/14 20:36:59 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ int	main(int argc, char *argv[])
 	if (dup_check(a))
 		return (end_return(-1, &a, &b));
 	b = 0;
-	return (end_return(process_parse(&a, &b, argc), &a, &b));
+	//return (end_return(process_parse(&a, &b, argc), &a, &b));
+	end_return(process_parse(&a, &b, argc), &a, &b);
+	while (1);
 }

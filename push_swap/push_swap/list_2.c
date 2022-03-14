@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:00:25 by ohw               #+#    #+#             */
-/*   Updated: 2022/03/11 18:50:17 by ohw              ###   ########.fr       */
+/*   Updated: 2022/03/14 20:22:58 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	dup_check(t_list *lst)
 	return (0);
 }
 
-int	count_sorted(t_list *lst, int size)
+int	count_state(t_list *lst, int size)
 {
 	int	i;
 

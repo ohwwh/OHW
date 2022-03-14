@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:47:29 by ohw               #+#    #+#             */
-/*   Updated: 2022/03/13 11:02:46 by ohw              ###   ########.fr       */
+/*   Updated: 2022/03/14 20:22:24 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	reverse_rotate(t_list **lst);
 t_list	*search(t_list *lst, int index);
 int		get_size(t_list *lst);
 int		dup_check(t_list *lst);
-int		count_sorted(t_list *lst, int size);
+int		count_state(t_list *lst, int size);
 int		is_sorted(t_list *lst, int size);
 int		abs(int x);
 int		bigger(int x, int y);

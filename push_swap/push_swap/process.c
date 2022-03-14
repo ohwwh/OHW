@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:05:00 by ohw               #+#    #+#             */
-/*   Updated: 2022/03/14 17:39:49 by hoh              ###   ########.fr       */
+/*   Updated: 2022/03/14 20:21:46 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,8 @@ void	process_main(t_list **lstA, t_list **lstB, int sizeA, int sizeB)
 			return ;
 		print_non_rotate("pb\n", lstA, lstB);
 		process_main(lstA, lstB, sizeA - 1, sizeB + 1);
-		i = opt(*lstA, *lstB, sizeA - 1, count_sorted(*lstA, sizeA - 1));
-		j = count_sorted(*lstA, sizeA - 1);
+		i = opt(*lstA, *lstB, sizeA - 1, count_state(*lstA, sizeA - 1));
+		j = count_state(*lstA, sizeA - 1);
 		j = count_a(*lstA, search(*lstB, i)->content, sizeA - 1, j);
 		if (i >= 0)
 			process_main_case_1(i, j, lstA, lstB);
