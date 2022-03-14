@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 16:16:33 by ohw               #+#    #+#             */
-/*   Updated: 2022/03/13 13:23:37 by hoh              ###   ########.fr       */
+/*   Created: 2022/03/12 01:18:31 by ohw               #+#    #+#             */
+/*   Updated: 2022/03/13 11:46:42 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "checker.h"
 
-void	process_final(t_list **A, int size)
+static int	process_parse(t_list **a, t_list **b, int argc)
 {
-	int	i;
-	int	j;
+	int		j;
 
-	i = 0;
-	j = count_sorted(*A, size);
-	if (size / 2 < j)
+	while (1)
 	{
-		j = size - j;
-		while (i ++ < j)
-			print_rotate("rra\n", A, 0);
+		j = execute(get_next_line(0), a, b);
+		if (j == -1)
+			return (-1);
+		else if (j == 1)
+			break ;
 	}
+	if (is_sorted(*a, argc - 1) == 1 && *b == 0)
+		ft_putstr_fd("OK\n", 1);
 	else
-	{
-		while (i ++ < j)
-			print_rotate("ra\n", A, 0);
-	}
+		ft_putstr_fd("KO\n", 1);
+	return (0);
 }
 
 int	main(int argc, char *argv[])
@@ -43,7 +43,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	i = 0;
 	while (i ++ < argc - 1)
-	{	
+	{
 		j = ft_strtol(argv[argc - i]);
 		if (!ft_strtol_error(argv[argc - i]) | (j > INT_MAX | j < INT_MIN))
 			return (end_return(-1, &a, &b));
@@ -52,7 +52,5 @@ int	main(int argc, char *argv[])
 	if (dup_check(a))
 		return (end_return(-1, &a, &b));
 	b = 0;
-	process_main(&a, &b, argc - 1, 0);
-	process_final(&a, argc - 1);
-	return (end_return(0, &a, &b));
+	return (end_return(process_parse(&a, &b, argc), &a, &b));
 }
