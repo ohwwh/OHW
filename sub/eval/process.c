@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:05:00 by ohw               #+#    #+#             */
-/*   Updated: 2022/03/14 17:39:49 by hoh              ###   ########.fr       */
+/*   Updated: 2022/03/11 22:57:52 by ohw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ static void	process_main_case_1(int i, int j, t_list **lstA, t_list **lstB)
 	k = 0;
 	if (j >= 0)
 	{
-		while (k ++ < smaller(i, j))
+		while (k ++ < smaller(i, j) && j != 1)
 			print_rotate("rr\n", lstA, lstB);
-		if (i <= j)
+		if (i <= j && j != 1)
 		{
 			while (k ++ <= j)
 				print_rotate("ra\n", lstA, lstB);
@@ -99,7 +99,7 @@ static void	process_main_case_2(int i, int j, t_list **lstA, t_list **lstB)
 	{
 		while (k ++ < abs(i))
 			print_rotate("rrb\n", lstA, lstB);
-		while (k ++ <= j + abs(i))
+		while (k ++ <= j + abs(i) && j != 1)
 			print_rotate("ra\n", lstA, lstB);
 	}
 }
@@ -127,5 +127,7 @@ void	process_main(t_list **lstA, t_list **lstB, int sizeA, int sizeB)
 		else
 			process_main_case_2(i, j, lstA, lstB);
 		print_non_rotate("pa\n", lstA, lstB);
+		if (j == 1)
+			print_non_rotate("sa\n", lstA, lstB);
 	}
 }

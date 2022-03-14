@@ -6,7 +6,7 @@
 /*   By: ohw <ohw@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:07:11 by ohw               #+#    #+#             */
-/*   Updated: 2022/03/14 17:40:57 by hoh              ###   ########.fr       */
+/*   Updated: 2022/03/13 14:36:41 by hoh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ int	count_all(int count_a, int count_b)
 
 	if (count_b >= 0)
 	{
-		if (count_a >= 0)
+		if (count_a >= 0 && count_a != 1)
 			ret = bigger(count_a, count_b) + 1;
+		else if (count_a == 1)
+			ret = count_b + 2;
 		else
 			ret = abs(count_a) + count_b + 1;
 	}
