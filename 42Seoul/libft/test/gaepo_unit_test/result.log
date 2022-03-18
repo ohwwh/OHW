@@ -1,0 +1,54 @@
+ft_memset: x25.43 slower than system's function (53051 cpu ticks vs 1349312)
+ft_memset: x143.05 slower than system's function (18641 cpu ticks vs 2666538)
+ft_memset: x9.12 slower than system's function (71992 cpu ticks vs 656710)
+
+ft_bzero: x58.07 slower than system's function (67608 cpu ticks vs 3925979)
+ft_bzero: x103.92 slower than system's function (19484 cpu ticks vs 2024845)
+ft_bzero: x2.00 slower than system's function (3 cpu ticks vs 6)
+
+ft_memcpy: x15.71 slower than system's function (56664 cpu ticks vs 889940)
+ft_memcpy: x192.24 slower than system's function (9357 cpu ticks vs 1798770)
+ft_memcpy: x46.76 slower than system's function (41470 cpu ticks vs 1939215)
+
+ft_memmove: x15.62 slower than system's function (28953 cpu ticks vs 452359)
+ft_memmove: x193.85 slower than system's function (9366 cpu ticks vs 1815607)
+ft_memmove: x34.84 slower than system's function (48894 cpu ticks vs 1703355)
+
+ft_memchr: x39.45 slower than system's function (22009 cpu ticks vs 868167)
+ft_memchr: x138.13 slower than system's function (99962 cpu ticks vs 13808017)
+ft_memchr: x47.31 slower than system's function (74014 cpu ticks vs 3501702)
+
+ft_memcmp: x16.12 slower than system's function (60258 cpu ticks vs 971639)
+ft_memcmp: x53.01 slower than system's function (217531 cpu ticks vs 11530355)
+ft_memcmp: x23.88 slower than system's function (78656 cpu ticks vs 1878275)
+
+ft_strlen: x33.96 slower than system's function (117196 cpu ticks vs 3979487)
+ft_strlen: x89.05 slower than system's function (186412 cpu ticks vs 16599576)
+ft_strlen: x50.56 slower than system's function (38969 cpu ticks vs 1970155)
+
+ft_strchr: x23.01 slower than system's function (119592 cpu ticks vs 2751594)
+ft_strchr: x78.66 slower than system's function (36047 cpu ticks vs 2835439)
+ft_strchr: x43.43 slower than system's function (70267 cpu ticks vs 3051620)
+
+ft_strrchr: x8.17 slower than system's function (198399 cpu ticks vs 1620286)
+ft_strrchr: x8.57 slower than system's function (188170 cpu ticks vs 1612341)
+ft_strrchr: x4.49 slower than system's function (176466 cpu ticks vs 792563)
+
+ft_strncmp: x30.47 slower than system's function (209097 cpu ticks vs 6370728)
+ft_strncmp: x71.70 slower than system's function (176206 cpu ticks vs 12634773)
+ft_strncmp: x65.13 slower than system's function (99265 cpu ticks vs 6464818)
+
+ft_strlcat: x25.24 slower than system's function (58255 cpu ticks vs 1470536)
+ft_strlcat: x56.05 slower than system's function (36850 cpu ticks vs 2065432)
+ft_strlcat: x10.12 slower than system's function (76656 cpu ticks vs 776031)
+
+ft_strnstr: x3.34 slower than system's function (332887 cpu ticks vs 1112213)
+ft_strnstr: x5.98 slower than system's function (405023 cpu ticks vs 2422008)
+ft_strnstr: x4.98 slower than system's function (145968 cpu ticks vs 727255)
+
+ft_atoi: x1.16 slower than system's function (503389 cpu ticks vs 583029)
+
+ft_strdup: x9.10 slower than system's function (112897 cpu ticks vs 1027775)
+ft_strdup: x9.92 slower than system's function (212594 cpu ticks vs 2108857)
+ft_strdup: x2.92 slower than system's function (643007 cpu ticks vs 1876305)
+
