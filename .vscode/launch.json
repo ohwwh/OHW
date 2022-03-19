@@ -2,6 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     
+
     {
       "name": "Python: Current File",
       "type": "python",
@@ -16,7 +17,9 @@
       "name": "Debug",
       "program": "${fileDirname}/${fileBasenameNoExtension}",
       "args": [],
-      "cwd": "${fileDirname}"
+      "cwd": "${fileDirname}",
+      "stopOnEntry": false,
+      "MIMode": "lldb"
     }
   ]
 }
