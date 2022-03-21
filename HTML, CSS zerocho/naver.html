@@ -4,20 +4,35 @@
         <meta charset="utf-8" />
         <title>네이버</title>
         <link rel="shortcut icon" href="./favicon.ico" />
+        <link rel="stylesheet" href="./naver.css">
     </head>
     <body>
-        <div>
-            <h1>
-                <a href="https://www.naver.com">네이버</a>
-            </h1>
-            <h2>검색창</h2>
-            <fieldset>
-                <legend>검색</legend>
-                <input />
-                <button>검색</button>
-            </fieldset>
-        </div>  
-        <div>
+        <header>
+            <!-- <div style="margin: 0 auto; width: 1080px">  가운데 정렬용 div -->
+                <!-- 컨텐츠가 가운데 정렬 되는 것이 아니라, 바깥 div에 대해서 해당 div(구역) 전체가 가운데 정렬 되는 것 -->
+                <!-- 이건 인라인 스타일 -->
+            <div id="header-center">
+                <div>
+                    <span>네이버를 시작페이지로</span>
+                    <span>쥬니어네이버</span>
+                    <span>해피빈</span>
+                </div>
+                <div id="header-search">
+                    <a href="https://www.naver.com" >
+                        <h1 id="header-logo">
+                            <span>네이버</span>
+                        </h1>
+                    </a>
+                    <h2>검색창</h2>
+                    <fieldset>
+                        <legend>검색</legend>
+                        <input />
+                        <button>검색</button>
+                    </fieldset>
+                </div>
+            </div>
+        </header>  
+        <nav>
             <ul>
                 <li>메일</li>
                 <li>까페</li>
@@ -28,7 +43,7 @@
                 <li>PAY</li>
                 <li>TV</li>
             </ul>
-        </div>
+        </nav>
         <div>
             <h2>실시간 검색어</h2>
         <h3>연합뉴스</h3>

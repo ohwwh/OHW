@@ -1,0 +1,44 @@
+
+#header-center{
+    margin: 0 auto;
+    width: 1080px;
+    /* 선택자 */
+}
+
+#header-search a {
+    text-decoration: none;
+}
+
+/* 부모 or 조상 태그에 적용된 css 속성은 자손 태그에 쭉 적용된다. 그래서 Cascading Style Sheet임 */
+div#header-search  h1 {
+    width: 200px;
+    height: 40px;
+    display: inline-block;
+    background-image: url(./002.png);
+    background-repeat: no-repeat;
+    /* 자식 선택자 */
+}
+#header-search span {
+    display: none;
+}
+/*div#header-search  h1 {
+    자손 선택자
+}*/
+
+#header-search h2 {
+    display: none
+    /* 기본 설정은 block 으로 되어 있음
+    이 설정을 적용하면 width를 설정해도 마진이 전체 길이만큼 차지하도록 설정되어
+    있기 때문에 여전히 다른 요소가 끼어들 수 없음 */
+    /* 만약 다른 요소를 옆에 넣고 싶으면, display: inline-block 설정해주면 됨 */
+    
+    
+    /*block, inline-block, inline의 차이 
+    1. block -> 한 페이지 너비 전체를 차지. width를 줘도 마진이 생겨서 계속 차지
+    2. inline-block -> 주어진 width, height만큼의 너비를 차지
+    3. inline -> 딱 자기 컨텐츠 만큼의 공간만 차지. span 태그의 경우 기본적으로 이 속성을 지님 */
+}
+
+#header-search fieldset{
+    width: 520px;
+}
