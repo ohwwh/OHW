@@ -5,11 +5,8 @@ int ft_strlen(char *s)
     int len;
 
     len = 0;
-    while (s && *s)
-    {
+    while (s && s[len])
         len ++;
-        s ++;
-    }
     return (len);
 }
 
@@ -33,9 +30,9 @@ int main(int argc, char *argv[])
     int i;
     int l;
 
-    i = 0;
     if (argc != 3)
         return (0);
+    i = 0;
     l = ft_strlen(argv[2]);
     while (argv[1][i])
     {

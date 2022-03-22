@@ -2,7 +2,9 @@
   "version": "0.2.0",
   "configurations": [
     
-    
+
+
+
 
     {
       "name": "Python: Current File",
@@ -13,9 +15,9 @@
       "justMyCode": true
     },
     {
+      "name": "Debug",
       "type": "lldb",
       "request": "launch",
-      "name": "Debug",
       "program": "${fileDirname}/${fileBasenameNoExtension}",
       "args": ["gcc", "gcc"],
       "cwd": "${fileDirname}",
