@@ -48,7 +48,7 @@ int	non_nbr(va_list *app, const char **fmt)
 	int	ret;
 
 	if (**fmt == 'c')
-	    ret = print_c((char)va_arg(*app, int));
+		ret = print_c((char)va_arg(*app, int));
 	else if (**fmt == 's')
 		ret = print_s(va_arg(*app, char *));
 	else

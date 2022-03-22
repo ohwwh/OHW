@@ -2,6 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     
+    
 
     {
       "name": "Python: Current File",
@@ -16,7 +17,7 @@
       "request": "launch",
       "name": "Debug",
       "program": "${fileDirname}/${fileBasenameNoExtension}",
-      "args": [],
+      "args": ["gcc", "gcc"],
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
       "MIMode": "lldb"

@@ -55,14 +55,14 @@ char	*get_next_line(int fd)
 	ft_bzero(temp, sizeof(char) * (BUFFER_SIZE + 1));
 	while (ret && !ft_strchr(ret, '\n') && read(fd, temp, BUFFER_SIZE) > 0)
 	{
-	    fr = ret;
+		fr = ret;
 		ret = ft_strjoin(ret, temp);
         free(fr);
 		ft_bzero(temp, sizeof(char) * (BUFFER_SIZE + 1));
 	}
 	if (ret)
 	{
-	    fr = ret;
+		fr = ret;
 		i = ft_strnlen(ret);
 		chunk = ft_strndup(&ret[i], ft_strlen(&ret[i]));
 		ret = ft_strndup(ret, i);

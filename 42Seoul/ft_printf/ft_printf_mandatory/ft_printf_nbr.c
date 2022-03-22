@@ -59,9 +59,9 @@ int	nbr(va_list *app, const char **fmt)
 	else if (**fmt == 'u')
 		ret = print_u((long)(va_arg(*app, unsigned int)));
 	else if (**fmt == 'x')
-	    ret = print_x((long)(va_arg(*app, unsigned int)));
+		ret = print_x((long)(va_arg(*app, unsigned int)));
 	else
-	    ret = print_upper_x((long)(va_arg(*app, unsigned int)));
+		ret = print_upper_x((long)(va_arg(*app, unsigned int)));
 	(*fmt) ++;
 	return (ret);
 }
