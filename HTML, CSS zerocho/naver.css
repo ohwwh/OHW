@@ -1,3 +1,15 @@
+*{
+    box-sizing: border-box;
+}
+
+.blind{
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+}
 
 #header-center{
     margin: 0 auto;
@@ -10,24 +22,31 @@
 }
 
 /* 부모 or 조상 태그에 적용된 css 속성은 자손 태그에 쭉 적용된다. 그래서 Cascading Style Sheet임 */
-div#header-search  h1 {
-    width: 200px;
-    height: 40px;
+#header-search h1{
+    vertical-align: middle;
+    /* 로고랑 검색창 정렬 맞추기*/
+    width: 228px;
+    height: 56px;
     display: inline-block;
-    background-image: url(./002.png);
+    background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_dba1af.png);
+    background-position: 0 -161px;
+    background-size: 471px 442px;
     background-repeat: no-repeat;
-    /* 자식 선택자 */
+    vertical-align: middle;
+    /*text-indent: 100%;
+    overflow: hidden;*/ /*밑에 span display none 하면 필요없음. 하지만 접근성을 위해 이런 꼼수를 써야하긴 함*/
+    
 }
-#header-search span {
+
+#header-search h1 span {
     display: none;
 }
-/*div#header-search  h1 {
-    자손 선택자
-}*/
 
 #header-search h2 {
-    display: none
-    /* 기본 설정은 block 으로 되어 있음
+
+    /*display: none*/
+    /*실제로는 이 태그 대신 class="blind"적용. 맨 위 참고*/
+    /* display의 기본 설정은 block 으로 되어 있음
     이 설정을 적용하면 width를 설정해도 마진이 전체 길이만큼 차지하도록 설정되어
     있기 때문에 여전히 다른 요소가 끼어들 수 없음 */
     /* 만약 다른 요소를 옆에 넣고 싶으면, display: inline-block 설정해주면 됨 */
@@ -40,5 +59,62 @@ div#header-search  h1 {
 }
 
 #header-search fieldset{
+    vertical-align: middle;
+    /* 로고랑 검색창 정렬 맞추기*/
+    margin-left: 20px;
+    /*padding-left: 12px;
+    padding-top: 12px;
+    padding-bottom: 10px;
+    padding-right: 0px;*/
+    padding: 12px 12px 10px 0px;
     width: 520px;
+    height: 49px;
+    display: inline-block;
+    border: 2px solid #03cf5d;
+    position: relative;
+    top: 5px;
+}
+
+#header-search fieldset input   {
+    padding: 0;
+    vertical-align: top;
+    border: none;
+    padding: none;
+    outline: none;
+    width: 405px;
+    height: 23px;
+    /* 별다른 설정안해도 기본적으로 css가 적용되어 있음. 이걸 없애주는것이 좋다 
+    개발자 도구에 user agent style sheet가 이걸 뜻함. user agent는 브라우저*/
+}
+
+/* 박스 모델 
+개발자 도구에서 스타일 항목에 네모처럼 나오는 애들
+1. 마진
+2. 보더
+3. 패딩
+4. 컨텐츠 */
+
+#header-search fieldset button {
+    width: 49px;
+    height: 49px;
+    border: none;
+    padding: 0;
+    background: #03cf5d;
+    position: absolute;
+    right: -2px;
+    top: -2px;
+}
+
+#search-image {
+    width: 21px;
+    height: 21px;
+    background-image: url(./sp_main_dba1af.png);
+    background-position: -404px 1px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    /*inline이면 컨텐츠 크기만큼 크기가 고정되는데, 컨텐츠가 없으니 0으로 강제 고정*/
+    background-size: 440px 408px;
+    margin: 14px;
+    /* 정렬 맞추기용. 바깥쪽 button의 경계와의 마진을 조절함으로서 한 가운데 놓을 수 있다*/
+
 }
