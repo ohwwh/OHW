@@ -11,7 +11,7 @@
     height: 1px;
 }
 
-#header-center{
+.center-align{
     margin: 0 auto;
     width: 1080px;
     /* 선택자 */
@@ -117,4 +117,63 @@
     margin: 14px;
     /* 정렬 맞추기용. 바깥쪽 button의 경계와의 마진을 조절함으로서 한 가운데 놓을 수 있다*/
 
+}
+
+/*
+    포지션
+    1. static
+    2. relative
+        static인 경우 자기자신의 위치를 기준으로 상대적으로 위치를 옮겨줌. 
+        containing block 이 위치 계산할 때 사용된다는데 솔직히 뭔소린지 모르겠음.
+    3. absolute
+        화면을 기준으로 위치를 옮김
+    4.  fixed
+        화면의 지정된 위치에 딱 고정돼있음. 스크롤 내려도 따라옴
+    
+*/
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav li span:first-child {
+    height: 16px;
+    display: inline-block;
+    background-image: url(sp_nav.png);
+    background-repeat: no-repeat;
+}
+
+nav li:first-child span:first-child{
+    width: 25px;
+    background-position: 0 -285px;
+}
+
+nav li:nth-child(2) span:first-child{
+    width: 27px;
+    background-position: -279px -52px;
+}
+
+nav li:nth-child(3) span:first-child{
+    width: 40px;
+    background-position: -100px -182px;
+}
+
+nav li:nth-child(4) span:first-child{
+    width: 40px;
+    background-position: -101px -156px;
+}
+
+nav li:nth-child(5) span:first-child{
+    width: 26px;
+    background-position: -279px -156px;
+}
+
+nav li:nth-child(6) span:first-child{
+    width: 25px;
+    background-position: -70px -285px;
 }
