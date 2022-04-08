@@ -15,12 +15,15 @@ const greeting = document.querySelector("#greeting");
 
 function logInSubmit(event){
     event.preventDefault();
+    console.log(event);
     const username = loginInput.value;
     loginForm.classList.add("hidden");
     localStorage.setItem("username", username);
     greeting.innerText = "Hello " + username;
     greeting.classList.remove("hidden");
 }
+
+//event
 
 /*function linkClick(event){
     event.preventDefault();
