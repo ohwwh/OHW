@@ -12,12 +12,15 @@ let toDos = [];
 
 function saveToDos(event){
     localStorage.setItem("todos", JSON.stringify(toDos));
+    //localStorage.setItem("todos", toDos);
+    //이렇게 하면...arguments. 내용이 저장이 되는게 아니라 그냥 todos에 object, object, 이런식으로 들어간다 흑흑
 }
 
 function deleteToDo(event){
     const li = event.target.parentElement;
-    toDos = toDos.filter(item => item.id != li.id);
+    toDos = toDos.filter((item) => item.id != parseInt(li.id));
     //localStorage.removeItem("todos");
+    //이걸 굳이 안해줘도 setItem하면 알아서 대체가 되더라
     saveToDos();
     li.remove();
 }
@@ -45,6 +48,7 @@ function handleToDoSubmit(event){
     };
     toDos.push(newToDoObj);
     paintToDo(newToDoObj)
+    //console.log(toDos);
     saveToDos();
 }
 
@@ -54,6 +58,7 @@ toDoForm.addEventListener("submit", handleToDoSubmit);
 const savedToDos = localStorage.getItem("todos");
 if (savedToDos != null){
     toDos = JSON.parse(savedToDos);
+    console.log(toDos);
     toDos.forEach((item) => paintToDo(item));
 }
 
