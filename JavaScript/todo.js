@@ -19,6 +19,8 @@ function saveToDos(event){
 function deleteToDo(event){
     const li = event.target.parentElement;
     toDos = toDos.filter((item) => item.id != parseInt(li.id));
+    // => 자스식 함수 표기법. 
+    //function anything(item){return (item.id != parseInt(li.id))}의 축약버젼
     //localStorage.removeItem("todos");
     //이걸 굳이 안해줘도 setItem하면 알아서 대체가 되더라
     saveToDos();
