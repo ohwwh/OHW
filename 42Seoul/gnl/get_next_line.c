@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+static char	*gnl_strjoin(char *s1, char *s2)
 {
 	char	*ret;
 	int		i;
@@ -20,7 +20,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1 && !s2)
 		return (0);
 	i = 0;
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	ret = (char *)malloc(sizeof(char) * (gnl_strlen(s1) + gnl_strlen(s2) + 1));
 	if (ret)
 	{
 		while (s1 && s1[i])
@@ -42,25 +42,25 @@ char	*ft_strjoin(char *s1, char *s2)
 
 char	*get_next_line(int fd)
 {
-	static char     *chunk;
+	static char		*chunk;
 	char			temp[BUFFER_SIZE + 1];
 	char			*ret;
 	int				i;
 
 	if (BUFFER_SIZE <= 0)
 		return (0);
-	ret = ft_strndup(chunk, ft_strlen(chunk), 1);
+	ret = gnl_strndup(chunk, gnl_strlen(chunk), 1);
 	ft_bzero(temp, sizeof(char) * (BUFFER_SIZE + 1));
 	while (ret && !ft_strchr(ret, '\n') && read(fd, temp, BUFFER_SIZE) > 0)
 	{
-		ret = ft_strjoin(ret, temp);
+		ret = gnl_strjoin(ret, temp);
 		ft_bzero(temp, sizeof(char) * (BUFFER_SIZE + 1));
 	}
 	if (ret)
 	{
-		i = ft_strnlen(ret);
-		chunk = ft_strndup(&ret[i], ft_strlen(&ret[i]), 0);
-		ret = ft_strndup(ret, i, 1);
+		i = gnl_strnlen(ret);
+		chunk = gnl_strndup(&ret[i], gnl_strlen(&ret[i]), 0);
+		ret = gnl_strndup(ret, i, 1);
 	}
 	return (ret);
 }

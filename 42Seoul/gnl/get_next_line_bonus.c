@@ -61,7 +61,7 @@ void	delete_node(t_node **lst, int fd)
 	free(target);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*gnl_strjoin(char *s1, char *s2)
 {
 	char	*ret;
 	int		i;
@@ -69,7 +69,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1 && !s2)
 		return (0);
 	i = 0;
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	ret = (char *)malloc(sizeof(char) * (gnl_strlen(s1) + gnl_strlen(s2) + 1));
 	if (ret)
 	{
 		while (s1 && s1[i])
@@ -100,18 +100,18 @@ char	*get_next_line(int fd)
 	start = find_create_node(fd, &lst);
 	if ((BUFFER_SIZE <= -1) | !start)
 		return (0);
-	ret = ft_strndup(start -> chunk, ft_strlen(start -> chunk), 1);
+	ret = gnl_strndup(start -> chunk, gnl_strlen(start -> chunk), 1);
 	ft_bzero(temp, sizeof(char) * (BUFFER_SIZE + 1));
 	while (ret && !ft_strchr(ret, '\n') && read(fd, temp, BUFFER_SIZE) > 0)
 	{
-		ret = ft_strjoin(ret, temp);
+		ret = gnl_strjoin(ret, temp);
 		ft_bzero(temp, sizeof(char) * (BUFFER_SIZE + 1));
 	}
 	if (ret)
 	{
-		i = ft_strnlen(ret);
-		start -> chunk = ft_strndup(&ret[i], ft_strlen(&ret[i]), 0);
-		ret = ft_strndup(ret, i, 1);
+		i = gnl_strnlen(ret);
+		start -> chunk = gnl_strndup(&ret[i], gnl_strlen(&ret[i]), 0);
+		ret = gnl_strndup(ret, i, 1);
 	}
 	if (!ret)
 		delete_node(&lst, fd);

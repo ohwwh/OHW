@@ -12,7 +12,7 @@
 
 #include "get_next_line_bonus.h"
 
-size_t	ft_strlen(char *str)
+size_t	gnl_strlen(char *str)
 {
 	size_t	len;
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(char *str)
 	return (len);
 }
 
-size_t	ft_strnlen(char *str)
+size_t	gnl_strnlen(char *str)
 {
 	size_t	len;
 
@@ -46,7 +46,7 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-char	*ft_strndup(char *src, size_t n, int flag)
+char	*gnl_strndup(char *src, size_t n, int flag)
 {
 	size_t	i;
 	char	*ret;

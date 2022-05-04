@@ -15,11 +15,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-size_t	ft_strlen(char *str);
-size_t	ft_strnlen(char *str);
+size_t	gnl_strlen(char *str);
+size_t	gnl_strnlen(char *str);
 void	ft_bzero(void *s, size_t n);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strndup(char *src, size_t n, int flag);
+char	*gnl_strndup(char *src, size_t n, int flag);
 char	*ft_strchr(const char *s, int c);
 char	*get_next_line(int fd);
 
