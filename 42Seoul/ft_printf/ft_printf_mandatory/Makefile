@@ -16,9 +16,9 @@ NAME=libftprintf.a
 SRCSDIR=srcs
 INCS=./
 SRCS=ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_base_fd.c\
-	 ft_checkdigit.c ft_checkdigit_address.c\
-	 ft_putaddress_fd.c ft_strlen.c\
-	 ft_printf.c ft_printf_nbr.c ft_printf_non_nbr.c
+	ft_checkdigit.c ft_checkdigit_address.c\
+	ft_putaddress_fd.c ft_strlen.c ft_itoa_base.c\
+	ft_printf.c ft_printf_nbr.c ft_printf_non_nbr.c
 
 OBJS=${SRCS:.c=.o}
 
