@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 int main(void){
-	printf("%d\n", '|');
-	printf("%d\n", '|');
-	
+	char *s = "가나다";
+	printf("%s\n", s);
 }
