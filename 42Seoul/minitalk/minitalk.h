@@ -20,14 +20,14 @@
 # include "libohw/includes/ft_printf.h"
 
 typedef struct s_global_set {
-	volatile int			length;
-	volatile sig_atomic_t	state;
-	volatile sig_atomic_t	ch;
-	char					*str;
-	int						old;
-	int						pid;
-	int						k;
-	int						erno;
+	sig_atomic_t	length;
+	sig_atomic_t	state;
+	sig_atomic_t	ch;
+	char			*str;
+	sig_atomic_t	old;
+	sig_atomic_t	pid;
+	sig_atomic_t	k;
+	sig_atomic_t	erno;
 }t_global_set;
 
 #endif
