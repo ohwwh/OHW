@@ -2,6 +2,7 @@
 	"files.associations": {
 		"algorithm": "c",
 		"random": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"__mutex_base": "c"
 	}
 }
