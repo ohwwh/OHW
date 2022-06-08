@@ -3,6 +3,9 @@
 		"algorithm": "c",
 		"random": "c",
 		"libft.h": "c",
-		"__mutex_base": "c"
+		"__mutex_base": "c",
+		"pthread.h": "c",
+		"locale": "c",
+		"string": "c"
 	}
 }
