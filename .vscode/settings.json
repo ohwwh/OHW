@@ -6,6 +6,9 @@
 		"__mutex_base": "c",
 		"pthread.h": "c",
 		"locale": "c",
-		"string": "c"
+		"string": "c",
+		"time.h": "c",
+		"__functional_03": "c",
+		"functional": "c"
 	}
 }
