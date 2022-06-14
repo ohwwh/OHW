@@ -9,6 +9,8 @@
 		"string": "c",
 		"time.h": "c",
 		"__functional_03": "c",
-		"functional": "c"
+		"functional": "c",
+		"ratio": "c",
+		"philosopher.h": "c"
 	}
 }
