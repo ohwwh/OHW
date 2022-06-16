@@ -28,3 +28,8 @@ class date{
 		void AddYear(int inc);
 		void ShowDate();
 };
+
+int main()
+{
+	date ndate = new date();
+}
