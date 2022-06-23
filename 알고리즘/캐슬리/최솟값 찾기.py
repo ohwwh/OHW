@@ -1,17 +1,16 @@
 from collections import deque
-import math
 
 N, L = map(int, input().split())
 
 arr = list(map(int, input().split()))
 
 q = deque()
-D = math.inf
-for i in range(L):
-    if
-    q.append(arr[i])
-    if arr[i] < D:
-        D = arr[i]
-    print(D, end=' ')
+for i in range(N):
+    while q and q[-1][0] > arr[i]:
+        q.pop()
+    q.append((arr[i], i))
+    while q and q[0][1] < i - L + 1:
+        q.popleft()
+    print(q[0][0], end=' ')
 
 
