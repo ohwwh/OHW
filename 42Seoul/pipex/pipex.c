@@ -35,11 +35,12 @@ int	main(int argc, char *argv[], char *envp[])
 	if (pid > 0)
 	{
 		printf("parent\n");
-		fd1 = open("./outfile", O_WRONLY);
+		//fd1 = open("./outfile", O_WRONLY);
+		fd1 = open("./outfile", O_WRONLY | O_APPEND);
 		dup2(fd[0], 0); //읽기용 파이프 = 파이프출구, 이곳을 통해 입력받을 수 있음
 		dup2(fd1, 1);
 		close(fd1);
-		//close(fd[1]); //안쓰는 쓰기용 파이프 = 파이프입구는 반드시 닫아준다
+		close(fd[1]); //안쓰는 쓰기용 파이프 = 파이프입구는 반드시 닫아준다
 		//close(fd[0]); 
 		waitpid(pid, &status, 0);
 		execve("/usr/bin/wc", wc, envp);
