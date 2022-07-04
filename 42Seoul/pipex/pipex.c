@@ -29,7 +29,7 @@ int	main(int argc, char *argv[], char *envp[])
 	fd1 = open("./infile", O_RDONLY);
 	pipe1 = pipe(fd);
 	printf("%d, %d, %d\n", fd[0], fd[1], pipe1);
-	dup2(fd1, 0);
+	dup2(fd1, 0); //fd1을 복제해서 0(표준입력)에다가 덮어씌운다
 	close(fd1);
 	pid = fork();
 	if (pid > 0)
@@ -40,8 +40,13 @@ int	main(int argc, char *argv[], char *envp[])
 		dup2(fd[0], 0); //읽기용 파이프 = 파이프출구, 이곳을 통해 입력받을 수 있음
 		dup2(fd1, 1);
 		close(fd1);
+<<<<<<< HEAD
 		close(fd[1]); //안쓰는 쓰기용 파이프 = 파이프입구는 반드시 닫아준다
 		//close(fd[0]); 
+=======
+		//close(fd[1]); //안쓰는 쓰기용 파이프 = 파이프입구는 반드시 닫아준다
+		//close(fd[0]);
+>>>>>>> 9f4842c04cd9fb9da2dde34577e0be38f6ef9c6d
 		waitpid(pid, &status, 0);
 		execve("/usr/bin/wc", wc, envp);
 	}
